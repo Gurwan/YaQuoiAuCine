@@ -1,1 +1,6 @@
 @import 'tailwindcss';
+
+body {
+    background-image: url("background.png");
+    background-repeat: repeat;
+}
