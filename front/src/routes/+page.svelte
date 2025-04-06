@@ -1,6 +1,6 @@
 <script lang="ts">
-	let props = $props();
-    let movies = props.data.movies.results;
+	let data = $props();
+	let movies = data.data.movies;
 </script>
 
 <div class="mx-auto mt-6 max-w-screen-2xl px-4">
