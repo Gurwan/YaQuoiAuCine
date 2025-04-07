@@ -8,8 +8,8 @@
 		<h1 class="logo">Y a quoi au ciné ?</h1>
 	</nav>
 
-	{#if movies?.length > 0}
-		<ul class="space-y-4 mt-3">
+	{#if movies?.length == 0}
+		<ul class="mt-3 space-y-4">
 			{#each movies as movie}
 				<li class="rounded bg-gray-100 p-4 shadow">
 					<h2 class="text-lg font-semibold">{movie.title}</h2>
@@ -24,15 +24,22 @@
 			{/each}
 		</ul>
 	{:else}
-		<p>Chargement ou aucun film trouvé.</p>
+		<div class="mt-10 mb-20 flex items-center justify-center">
+			<img
+				src="loading.gif"
+				alt="Chargement..."
+				class="loading-gif"
+			/>
+		</div>
 	{/if}
-</div>
 
-<img
-	src="/home_no_bg.webp"
-	alt=""
-	class="absolute bottom-0 left-0 w-auto max-w-xs md:max-w-sm lg:max-w-md"
-/>
+	<footer class="bg-white rounded-lg shadow-sm dark:bg-gray-900 m-4">
+		<div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+			<span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="/" class="hover:underline">Y a quoi au ciné™</a>. All Rights Reserved.</span>
+		</div>
+	</footer>
+</div>
 
 <style>
 	.logo {
@@ -42,5 +49,10 @@
 		height: 85px;
 		text-indent: -9999px;
 		display: block;
+	}
+
+	.loading-gif {
+		height: 15.625rem;
+		width: 10.41rem;
 	}
 </style>
