@@ -2,6 +2,10 @@
 	import type { Movie } from '$lib/types/movie';
 	let data = $props();
 	let movies: Movie[] = data.data.movies;
+
+	function openMovie(movie: Movie) {
+		console.log('open movie : ' + movie.title);
+	}
 </script>
 
 <div class="mx-auto mt-6 max-w-screen-2xl px-4">
@@ -10,20 +14,30 @@
 	</nav>
 
 	{#if movies?.length > 0}
-		<ul class="mt-3 space-y-4">
+		<div class="mt-3 grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 			{#each movies as movie}
-				<li class="rounded bg-gray-100 p-4 shadow">
-					<h2 class="text-lg font-semibold">{movie.title}</h2>
-					{#if movie.poster}
+				<button
+					class="group transform cursor-pointer transition hover:scale-105"
+					onclick={() => openMovie(movie)}
+				>
+					<div class="relative">
 						<img
 							src={'https://image.tmdb.org/t/p/w300' + movie.poster}
 							alt={movie.title}
-							class="mt-2 rounded"
+							class="h-auto w-full rounded object-cover shadow-lg"
 						/>
-					{/if}
-				</li>
+						<div
+							class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100"
+						>
+							★ {movie.rating.toFixed(1)} / 10
+						</div>
+					</div>
+					<h2 class="mt-2 truncate text-center text-sm font-medium text-gray-800 sm:text-base">
+						{movie.title}
+					</h2>
+				</button>
 			{/each}
-		</ul>
+		</div>
 	{:else}
 		<div class="mb-20 mt-10 flex items-center justify-center">
 			<img src="loading.gif" alt="Chargement..." class="loading-gif" />
