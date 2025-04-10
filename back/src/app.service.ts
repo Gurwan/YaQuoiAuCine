@@ -3,7 +3,7 @@ import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Movie } from './interfaces/movie.interface';
+import { Movie, MovieResponse } from './interfaces/movie.interface';
 
 @Injectable()
 export class AppService {
@@ -30,7 +30,7 @@ export class AppService {
       const urlPage = `${url}?api_key=${apiKey}&language=fr-FR&region=FR&page=${i}`;
       const response = await this.httpService.axiosRef.get(urlPage);
 
-      const mappedMovie = response.data.results.map((movie: any): Movie => ({
+      const mappedMovie = response.data.results.map((movie: MovieResponse): Movie => ({
         title: movie.title,
         poster: movie.poster_path,
         release_date: movie.release_date,

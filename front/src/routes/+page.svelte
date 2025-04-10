@@ -21,11 +21,20 @@
 					onclick={() => openMovie(movie)}
 				>
 					<div class="relative">
-						<img
-							src={'https://image.tmdb.org/t/p/w300' + movie.poster}
-							alt={movie.title}
-							class="h-auto w-full rounded object-cover shadow-lg"
-						/>
+						{#if movie.poster}
+							<img
+								src={'https://image.tmdb.org/t/p/w300' + movie.poster}
+								alt={movie.title}
+								class="h-auto w-full rounded object-cover shadow-lg"
+							/>
+						{:else}
+							<img
+								src="default_poster.webp"
+								alt={movie.title}
+								class="h-auto w-full rounded object-cover shadow-lg"
+							/>
+						{/if}
+
 						<div
 							class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100"
 						>
