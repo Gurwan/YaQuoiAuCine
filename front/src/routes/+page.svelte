@@ -3,8 +3,16 @@
 	let data = $props();
 	let movies: Movie[] = data.data.movies;
 
-	function openMovie(movie: Movie) {
-		console.log('open movie : ' + movie.title);
+	async function openMovie(movie: Movie) {
+		try {
+			const response = await fetch(`http://localhost:3000/movie/${movie.id}`);
+			if (!response.ok) throw new Error('Erreur de chargement');
+
+			const selectedMovie = await response.json();
+			console.log('Détails du film :', selectedMovie);
+		} catch (error) {
+			console.error('Erreur lors de l\'appel API à movie :', error);
+		}
 	}
 </script>
 

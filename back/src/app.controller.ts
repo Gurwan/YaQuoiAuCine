@@ -1,4 +1,4 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Movie } from './interfaces/movie.interface';
 
@@ -9,5 +9,10 @@ export class AppController {
   @Get("movies")
   async getMovies(@Query('page') page = 1): Promise<Movie[]> {
     return this.appService.getNowPlayingFrance(page);
+  }
+
+  @Get("movie/:id")
+  async getMovie(@Param('id') id: number): Promise<Movie> {
+    return this.appService.getMovieById(Number(id));
   }
 }

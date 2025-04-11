@@ -8,14 +8,17 @@ import { Movie, MovieResponse } from './interfaces/movie.interface';
 @Injectable()
 export class AppService {
 
+  private apiKey: string;
+
   constructor(
     private configService: ConfigService,
     private httpService: HttpService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) { }
+  ) { 
+    this.apiKey = this.configService.get<string>('TMDB_API_KEY') ?? "";
+  }
 
   async getNowPlayingFrance(page = 1): Promise<Movie[]> {
-    const apiKey = this.configService.get<string>('TMDB_API_KEY');
     const cacheKey = `movies-in-theater:page-${page}`;
 
     const cached = await this.cacheManager.get<Movie[]>(cacheKey);
@@ -23,14 +26,15 @@ export class AppService {
       return cached;
     }
 
-    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=fr-FR&region=FR`;
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&language=fr-FR&region=FR`;
     const moviesResults: Movie[] = [];
 
     for (let i = 1; i <= page * 3; i++) {
-      const urlPage = `${url}?api_key=${apiKey}&language=fr-FR&region=FR&page=${i}`;
+      const urlPage = `${url}?api_key=${this.apiKey}&language=fr-FR&region=FR&page=${i}`;
       const response = await this.httpService.axiosRef.get(urlPage);
 
       const mappedMovie = response.data.results.map((movie: MovieResponse): Movie => ({
+        id: movie.id,
         title: movie.title,
         poster: movie.poster_path,
         release_date: movie.release_date,
@@ -43,5 +47,31 @@ export class AppService {
     await this.cacheManager.set(cacheKey, moviesResults);
 
     return moviesResults;
+  }
+
+  async getMovieById(id: number): Promise<Movie> {
+    const cacheKey = `movie:id-${id}`;
+
+    const cached = await this.cacheManager.get<Movie>(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiKey}&language=fr-FR`;
+    const response: MovieResponse = (await this.httpService.axiosRef.get(url)).data;
+    const movie: Movie = {
+      id: response.id,
+      title: response.title,
+      poster: response.poster_path,
+      release_date: response.release_date,
+      rating: response.vote_average,
+      overview: response.overview,
+      budget: response.budget,
+      revenue: response.revenue
+    };
+
+    await this.cacheManager.set(cacheKey, movie);
+
+    return movie;
   }
 }
