@@ -71,6 +71,7 @@ export class AppService {
       genres: response.genres.map((genre) => genre.name),
       countries: response.production_countries.map((country) => country.iso_3166_1),
       popularity: response.popularity,
+      background: response.backdrop_path,
       studios: response.production_companies.map((company) => ({
         name: company.name,
         country: company.origin_country

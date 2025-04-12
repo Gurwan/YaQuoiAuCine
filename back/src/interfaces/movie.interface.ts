@@ -44,6 +44,7 @@ export interface MovieDetailsResponse extends MovieResponse {
     popularity: number;
     production_companies: {name: string, origin_country: string}[];
     runtime: number;
+    backdrop_path: string;
     credits: MovieCredits;
 }
 
@@ -55,6 +56,7 @@ export interface MovieDetails extends Movie {
     popularity: number;
     studios: {name: string, country: string}[];
     duration: number;
+    background: string;
     credits: MovieCredits;
 }
 
