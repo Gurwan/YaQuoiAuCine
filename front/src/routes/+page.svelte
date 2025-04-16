@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type { Movie } from '$lib/types/movie';
+	import MoviePanel from '../components/MoviePanel.svelte';
 	import Movies from '../components/Movies.svelte';
 
 	let data = $props();
 	let movies: Movie[] = data.data.movies;
+
+	let selectedMovie = $state();
 </script>
 
 <div class="mx-auto mt-6 max-w-screen-2xl px-4">
@@ -11,7 +14,11 @@
 		<h1 class="logo">Y a quoi au ciné ?</h1>
 	</nav>
 
-	<Movies {movies} />
+	<Movies {movies} bind:details={selectedMovie} />
+
+	{#if selectedMovie}
+		<MoviePanel movie={selectedMovie} />
+	{/if}
 
 	<footer class="m-4 rounded-lg bg-white shadow-sm dark:bg-gray-900">
 		<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">

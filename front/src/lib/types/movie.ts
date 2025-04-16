@@ -5,6 +5,4 @@ export interface Movie {
     release_date: string;
     rating: number;
     overview: string;   
-    revenue?: number;
-    budget?: number;
 }

@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
 	import MovieCard from './MovieCard.svelte';
-	let data = $props();
-    let movies = data.movies;
+
+	let { details = $bindable(), movies } = $props();
 </script>
 
 {#if movies?.length > 0}
 	<div class="mt-3 grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 		{#each movies as movie}
-			<MovieCard {movie} />
+			<MovieCard {movie} bind:details={details}/>
 		{/each}
 	</div>
 {:else}

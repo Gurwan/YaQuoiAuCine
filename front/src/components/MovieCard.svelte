@@ -1,16 +1,14 @@
 <script lang="ts">
 	import type { Movie } from "$lib/types/movie";
 
-	let data = $props();
-	let movie = data;
+	let { details = $bindable(), movie } = $props();
 
 	async function openMovie(movie: Movie) {
 		try {
 			const response = await fetch(`http://localhost:3000/movie/${movie.id}`);
 			if (!response.ok) throw new Error('Erreur de chargement');
 
-			const selectedMovie = await response.json();
-			console.log('Détails du film :', selectedMovie);
+			details = await response.json();
 		} catch (error) {
 			console.error('Erreur lors de l\'appel API à movie :', error);
 		}
