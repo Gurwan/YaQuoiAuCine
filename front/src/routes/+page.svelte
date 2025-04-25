@@ -14,11 +14,21 @@
 		<h1 class="logo">Y a quoi au ciné ?</h1>
 	</nav>
 
-	<Movies {movies} bind:details={selectedMovie} />
+	<div class="mt-6 flex flex-col md:flex-row gap-4 relative">
 
-	{#if selectedMovie}
-		<MoviePanel movie={selectedMovie} />
-	{/if}
+
+		{#if selectedMovie}
+			<div class="w-full md:w-1/2">
+				<Movies {movies} bind:details={selectedMovie} />
+			</div>
+
+			<MoviePanel bind:selectedMovie={selectedMovie} />
+		{:else}
+			<div class="w-full">
+				<Movies {movies} bind:details={selectedMovie} />
+			</div>
+		{/if}
+	</div>
 
 	<footer class="m-4 rounded-lg bg-white shadow-sm dark:bg-gray-900">
 		<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">

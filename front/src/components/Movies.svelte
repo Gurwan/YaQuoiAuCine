@@ -5,17 +5,24 @@
 </script>
 
 {#if movies?.length > 0}
-	<div class="mt-3 grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-		{#each movies as movie}
-			<MovieCard {movie} bind:details={details}/>
-		{/each}
-	</div>
+	{#if details}
+		<div class="mt-3 grid grid-cols-2 gap-4 p-4">
+			{#each movies as movie}
+				<MovieCard {movie} bind:details />
+			{/each}
+		</div>
+	{:else}
+		<div class="mt-3 grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+			{#each movies as movie}
+				<MovieCard {movie} bind:details />
+			{/each}
+		</div>
+	{/if}
 {:else}
 	<div class="mb-20 mt-10 flex items-center justify-center">
 		<img src="loading.gif" alt="Chargement..." class="loading-gif" />
 	</div>
 {/if}
-
 
 <style>
 	.loading-gif {
