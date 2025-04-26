@@ -6,37 +6,37 @@
 	}
 </script>
 
-<div class="fixed inset-0 z-50 bg-black bg-opacity-60 backdrop-blur-sm md:backdrop-blur-0 md:bg-transparent md:inset-auto md:fixed md:top-0 md:right-0 md:w-[50vw] md:h-screen">
-	<div class="h-full overflow-y-auto shadow-xl rounded-none md:rounded-l-xl">
-		<div class="relative bg-stone-200 h-56 md:h-72 bg-cover bg-center pb-2">
-			<button
-			  class="absolute top-4 right-4 text-black p-2"
-			  onclick={closePanel}>
-			  ✕
-			</button>
-
-			<div class="absolute bottom-0 left-4 right-4 pb-4 flex items-end space-x-4 transform translate-y-1/2">
-			  <img
-				src={'https://image.tmdb.org/t/p/w300' + selectedMovie.poster}
+<div
+	class="fixed inset-0 z-50 bg-black bg-opacity-60 backdrop-blur-sm md:fixed md:inset-auto md:right-0 md:top-0 md:h-screen md:w-[50vw] md:bg-transparent md:backdrop-blur-0"
+>
+	<div class="h-full overflow-y-auto rounded-none shadow-xl md:rounded-l-xl">
+		<div class="relative h-56 overflow-hidden bg-stone-200 pb-8 md:h-72">
+			<img
+				src={'https://image.tmdb.org/t/p/original' + selectedMovie.background}
 				alt={selectedMovie.title}
-				class="w-24 md:w-36 rounded shadow-xl"
-			  />
-		  
-			  <h2 class="text-2xl md:text-6xl font-semibold text-black">
-				{selectedMovie.title}
-			  </h2>
-			</div>
-		  </div>
-		  
-		<div class="p-6 pt-16 bg-white">
+				class="absolute inset-0 h-full w-full object-cover font-mono subpixel-antialiased"
+			/>
 
-			<p class="text-sm mb-4">
+			<button
+				class="absolute right-4 top-4 rounded-full bg-black/50 p-2 text-2xl text-white"
+				onclick={closePanel}>✕</button
+			>
+
+			<div class="absolute bottom-4 left-4 right-4">
+				<h2 class="text-2xl font-semibold text-white drop-shadow-lg md:text-6xl">
+					{selectedMovie.title}
+				</h2>
+			</div>
+		</div>
+
+		<div class="bg-white p-6 pt-4">
+			<p class="mb-4 text-sm">
 				Sorti le {selectedMovie.release_date} — {selectedMovie.duration} min — ⭐ {selectedMovie.rating}
 			</p>
 
 			<p class="mb-6">{selectedMovie.overview}</p>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+			<div class="grid grid-cols-1 gap-6 text-sm md:grid-cols-2">
 				<div>
 					<p><span class="font-semibold">Genres :</span> {selectedMovie.genres.join(', ')}</p>
 
@@ -47,50 +47,65 @@
 
 				<div>
 					{#if selectedMovie.budget}
-						<p><span class="font-semibold">Budget :</span> {selectedMovie.budget.toLocaleString()} $</p>
+						<p>
+							<span class="font-semibold">Budget :</span>
+							{selectedMovie.budget.toLocaleString()} $
+						</p>
 					{/if}
 
 					{#if selectedMovie.revenue}
-						<p><span class="font-semibold">Revenus :</span> {selectedMovie.revenue.toLocaleString()} $</p>
+						<p>
+							<span class="font-semibold">Revenus :</span>
+							{selectedMovie.revenue.toLocaleString()} $
+						</p>
 					{/if}
 
 					{#if selectedMovie.revenue && selectedMovie.budget}
 						{#if selectedMovie.budget * 2.5 < selectedMovie.revenue}
-						RENTABLE
+							<p class="w-max rounded bg-green-500 px-3 py-1 text-white">Rentable</p>
 						{:else}
-							PAS (ENCORE) RENTABLE
+							<p class="w-max rounded bg-red-500 px-3 py-1 text-white">Pas (encore) rentable</p>
 						{/if}
 					{/if}
-	
-					<p><span class="font-semibold">Studios :</span> {selectedMovie.studios.map(s => s.name).join(', ')}</p>
+
+					<p>
+						<span class="font-semibold">Studios :</span>
+						{selectedMovie.studios
+							.map((s: { name: string; origin_country: string }) => s.name)
+							.join(', ')}
+					</p>
 				</div>
 			</div>
 
 			<div class="mt-6">
-				<h3 class="font-semibold text-lg mb-2">Distribution</h3>
-				
-				<div class="flex overflow-x-auto gap-4">
+				<h3 class="mb-2 text-lg font-semibold">Distribution</h3>
+
+				<div class="flex gap-4 overflow-x-auto">
 					{#each selectedMovie.credits.cast.slice(0, 8) as actor}
-						<div class="w-24 text-center flex-shrink-0">
-							<img src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt={actor.name} class="rounded h-28 object-cover mx-auto" />
-							
-							<p class="text-xs mt-1 font-medium">{actor.name}</p>
-							
+						<div class="w-24 flex-shrink-0 text-center">
+							<img
+								src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+								alt={actor.name}
+								class="mx-auto h-28 rounded object-cover"
+							/>
+
+							<p class="mt-1 text-xs font-medium">{actor.name}</p>
+
 							<p class="text-xs text-gray-500">{actor.character}</p>
 						</div>
 					{/each}
 				</div>
 			</div>
-			
+
 			<div class="mt-6">
-				<h3 class="font-semibold text-lg mb-2">Équipe</h3>
-				
-				<div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm text-gray-600">
+				<h3 class="mb-2 text-lg font-semibold">Équipe</h3>
+
+				<div class="grid grid-cols-2 gap-4 text-sm text-gray-600 md:grid-cols-3">
 					{#each selectedMovie.credits.crew.slice(0, 6) as crew}
 						<div>
 							<p class="font-medium">{crew.name}</p>
-							
-							<p class="text-gray-500 text-xs">{crew.job}</p>
+
+							<p class="text-xs text-gray-500">{crew.job}</p>
 						</div>
 					{/each}
 				</div>

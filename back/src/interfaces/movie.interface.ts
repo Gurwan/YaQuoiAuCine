@@ -5,6 +5,7 @@ export interface MovieResponse {
     release_date: string;
     vote_average: number;
     overview: string;
+    original_language: string;
 }
 
 export interface Movie {
@@ -14,6 +15,7 @@ export interface Movie {
     release_date: string;
     rating: number;
     overview: string;   
+    language?: string;
 }
 
 interface MoviePeople {

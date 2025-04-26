@@ -20,7 +20,7 @@ export class AppService {
   }
 
   async getNowPlayingFrance(page = 1): Promise<Movie[]> {
-    const cacheKey = `movies-in-theater:page-${page}`;
+    const cacheKey = `movies-theater:page-${page}`;
 
     const cached = await this.cacheManager.get<Movie[]>(cacheKey);
     if (cached) {
@@ -30,7 +30,7 @@ export class AppService {
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&language=fr-FR&region=FR`;
     const moviesResults: Movie[] = [];
 
-    for (let i = 1; i <= page * 3; i++) {
+    for (let i = 1; i <= page * 5; i++) {
       const urlPage = `${url}?api_key=${this.apiKey}&language=fr-FR&region=FR&page=${i}`;
       const response = await this.httpService.axiosRef.get(urlPage);
 
@@ -41,13 +41,35 @@ export class AppService {
         release_date: movie.release_date,
         rating: movie.vote_average,
         overview: movie.overview,
+        language: movie.original_language
       }));
 
       moviesResults.push(...mappedMovie);
     }
-    await this.cacheManager.set(cacheKey, moviesResults);
 
-    return moviesResults;
+    const moviesSorted = this.sortMoviesResults(moviesResults);
+
+    await this.cacheManager.set(cacheKey, moviesSorted);
+
+    return moviesSorted;
+  }
+
+  private sortMoviesResults(moviesResults: Movie[]) {
+    const frenchMovies = moviesResults
+    .slice(7)
+    .filter(movie => movie.language === 'fr')
+    .slice(0, 6);
+
+    const frenchMovieIds = new Set(frenchMovies.map(m => m.id));
+    const filteredMovies = moviesResults.filter(m => !frenchMovieIds.has(m.id));
+
+    const result = [
+      ...filteredMovies.slice(0, 7),   
+      ...frenchMovies,                 
+      ...filteredMovies.slice(7)       
+    ];
+
+    return result;
   }
 
   async getMovieById(id: number): Promise<Movie> {
