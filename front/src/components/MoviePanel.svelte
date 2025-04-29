@@ -1,8 +1,28 @@
 <script lang="ts">
+	import { PopularityCategory } from '$lib/types/popularity';
+
 	let { selectedMovie = $bindable() } = $props();
 
 	function closePanel() {
 		selectedMovie = null;
+	}
+
+	function getPopularityCategory(popularity: number | undefined): PopularityCategory {
+		if (popularity === undefined) {
+			return PopularityCategory.INCONNU_BATAILLON;
+		} else if (popularity >= 400) {
+			return PopularityCategory.HYPE_TOTALE;
+		} else if (popularity >= 200) {
+			return PopularityCategory.GROS_BUZZ;
+		} else if (popularity >= 50) {
+			return PopularityCategory.FAIT_PARLER;
+		} else if (popularity >= 10) {
+			return PopularityCategory.VU_PAR_LES_CINEPHILES;
+		} else if (popularity >= 4) {
+			return PopularityCategory.PLANQUE;
+		}
+
+		return PopularityCategory.INCONNU_BATAILLON;
 	}
 </script>
 
@@ -42,7 +62,10 @@
 
 					<p><span class="font-semibold">Pays :</span> {selectedMovie.countries.join(', ')}</p>
 
-					<p><span class="font-semibold">Popularité :</span> {selectedMovie.popularity}</p>
+					<p>
+						<span class="font-semibold">Popularité :</span>
+						{getPopularityCategory(selectedMovie.popularity)}
+					</p>
 				</div>
 
 				<div>
