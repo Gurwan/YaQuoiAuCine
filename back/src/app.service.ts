@@ -38,8 +38,8 @@ export class AppService {
         id: movie.id,
         title: movie.title,
         poster: movie.poster_path,
-        release_date: movie.release_date,
-        rating: movie.vote_average,
+        release_date: Intl.DateTimeFormat('fr-FR').format(new Date(movie.release_date)),
+        rating: Number(movie.vote_average.toFixed(2)),
         overview: movie.overview,
         language: movie.original_language
       }));
@@ -86,8 +86,8 @@ export class AppService {
       id: response.id,
       title: response.title,
       poster: response.poster_path,
-      release_date: response.release_date,
-      rating: response.vote_average,
+      release_date: Intl.DateTimeFormat('fr-FR').format(new Date(response.release_date)),
+      rating: Number(response.vote_average.toFixed(2)),
       overview: response.overview,
       budget: response.budget,
       revenue: response.revenue,
@@ -99,7 +99,7 @@ export class AppService {
         name: company.name,
         country: company.origin_country
       })),
-      duration: response.runtime,
+      duration: this.durationToReadableFormat(response.runtime),
       credits: {
         cast: response.credits.cast.map((person) => ({
           name: person.name,
@@ -126,5 +126,21 @@ export class AppService {
     });
   
    return "";
+  }
+
+  private durationToReadableFormat(duration: number): string {
+    const hours = Math.floor(duration / 60);
+    const minutes = duration % 60;
+    let ret = '';
+
+    if (hours > 0 && minutes > 0) {
+      ret = `${hours}h ${minutes}min`;
+    } else if (hours > 0) {
+      ret = `${hours}h`;
+    } else {
+      ret = `${minutes}min`;
+    }
+
+    return ret;
   }
 }

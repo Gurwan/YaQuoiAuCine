@@ -51,7 +51,7 @@
 
 		<div class="bg-white p-6 pt-4">
 			<p class="mb-4 text-sm">
-				Sorti le {selectedMovie.release_date} — {selectedMovie.duration} min — ⭐ {selectedMovie.rating}
+				Sorti le {selectedMovie.release_date} — {selectedMovie.duration} — ⭐ {selectedMovie.rating} / 10
 			</p>
 
 			<p class="mb-6">{selectedMovie.overview}</p>

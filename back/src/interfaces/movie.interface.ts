@@ -57,7 +57,7 @@ export interface MovieDetails extends Movie {
     countries: string[];
     popularity: number;
     studios: {name: string, country: string}[];
-    duration: number;
+    duration: string;
     background: string;
     credits: MovieCredits;
 }
