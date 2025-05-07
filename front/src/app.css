@@ -4,3 +4,11 @@ body {
     background-image: url("background.png");
     background-repeat: repeat;
 }
+
+.hide-scrollbar {
+    scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}

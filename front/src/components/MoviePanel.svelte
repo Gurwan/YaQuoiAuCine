@@ -104,18 +104,26 @@
 			<div class="mt-6">
 				<h3 class="mb-2 text-lg font-semibold">Distribution</h3>
 
-				<div class="hide-scrollbar flex gap-4 overflow-x-auto">
+				<div class="flex gap-4 overflow-x-auto">
 					<div class="flex space-x-6 pb-4">
 						{#each selectedMovie.credits.cast as actor (actor.name)}
-							<div class="relative w-28 group flex-shrink-0 text-center">
+							<div class="group relative w-28 flex-shrink-0 text-center">
 								<div
 									class="aspect-square transform overflow-hidden rounded-full border-4 border-white shadow-md transition-transform duration-300 group-hover:scale-105"
 								>
-									<img
-										src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
-										alt={actor.name}
-										class="h-full w-full object-cover"
-									/>
+									{#if actor.profile_path}
+										<img
+											src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+											alt={actor.name}
+											class="h-full w-full object-cover"
+										/>
+									{:else}
+										<img
+											src={'empty_actor.webp'}
+											alt={actor.name}
+											class="h-full w-full object-cover"
+										/>
+									{/if}
 								</div>
 
 								<p class="mt-1 text-xs font-medium">{actor.name}</p>
