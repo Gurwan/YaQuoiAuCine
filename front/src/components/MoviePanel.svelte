@@ -138,14 +138,34 @@
 			<div class="mt-6">
 				<h3 class="mb-2 text-lg font-semibold">Équipe</h3>
 
-				<div class="grid grid-cols-2 gap-4 text-sm text-gray-600 md:grid-cols-3">
-					{#each selectedMovie.credits.crew.slice(0, 6) as crew}
-						<div>
-							<p class="font-medium">{crew.name}</p>
+				<div class="flex gap-4 overflow-x-auto">
+					<div class="flex space-x-6 pb-4">
+						{#each selectedMovie.credits.crew as crew (crew.name + ' | ' + crew.job)}
+							<div class="group relative w-28 flex-shrink-0 text-center">
+								<div
+									class="aspect-square transform overflow-hidden rounded-full border-4 border-white shadow-md transition-transform duration-300 group-hover:scale-105"
+								>
+									{#if crew.profile_path}
+										<img
+											src={`https://image.tmdb.org/t/p/w185${crew.profile_path}`}
+											alt={crew.name}
+											class="h-full w-full object-cover"
+										/>
+									{:else}
+										<img
+											src={'empty_crew.webp'}
+											alt={crew.name}
+											class="h-full w-full object-cover"
+										/>
+									{/if}
+								</div>
 
-							<p class="text-xs text-gray-500">{crew.job}</p>
-						</div>
-					{/each}
+								<p class="mt-1 text-xs font-medium">{crew.name}</p>
+
+								<p class="text-xs text-gray-500">{crew.job}</p>
+							</div>
+						{/each}
+					</div>
 				</div>
 			</div>
 		</div>

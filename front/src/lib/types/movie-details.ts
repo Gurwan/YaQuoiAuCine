@@ -10,8 +10,6 @@ export interface MovieCast extends MoviePeople {
 }
 
 export interface MovieCrew extends MoviePeople {
-    name: string;
-    profile_path?: string;
     job: string;
 }
 
