@@ -101,13 +101,11 @@
 				</div>
 			</div>
 
-			<div class="mt-6">
-				<h3 class="mb-2 text-lg font-semibold">Distribution</h3>
+			<div class="mt-3 bg-[url('background_actor.webp')] bg-top bg-repeat">
+				<h3 class="mb-2 bg-black p-2 text-center text-lg font-semibold text-white">Distribution</h3>
 
 				<div class="flex gap-4 overflow-x-auto">
-					<div
-						class="flex space-x-6 bg-[url('background_actor.webp')] bg-top bg-repeat p-3"
-					>
+					<div class="flex space-x-6 p-3">
 						{#each selectedMovie.credits.cast as actor (actor.name)}
 							<div
 								class="group relative flex w-28 flex-shrink-0 flex-col items-center justify-center text-center"
@@ -141,13 +139,15 @@
 				</div>
 			</div>
 
-			<div class="mt-6">
-				<h3 class="mb-2 text-lg font-semibold">Équipe</h3>
+			<div class="mt-1 bg-[url('background_crew.webp')] bg-top bg-repeat">
+				<h3 class="mb-2 bg-black p-2 text-center text-lg font-semibold text-white">Équipe</h3>
 
 				<div class="flex gap-4 overflow-x-auto">
-					<div class="flex space-x-6 pb-4">
+					<div class="flex space-x-6 p-3">
 						{#each selectedMovie.credits.crew as crew (crew.name + ' | ' + crew.job)}
-							<div class="group relative w-28 flex-shrink-0 text-center">
+							<div
+								class="group relative flex w-28 flex-shrink-0 flex-col items-center justify-center text-center"
+							>
 								<div
 									class="aspect-square transform overflow-hidden rounded-full border-4 border-white shadow-md transition-transform duration-300 group-hover:scale-105"
 								>
@@ -166,9 +166,11 @@
 									{/if}
 								</div>
 
-								<p class="mt-1 text-xs font-medium">{crew.name}</p>
+								<div class="bg-black p-2">
+									<p class="mt-1 text-xs font-medium text-white">{crew.name}</p>
 
-								<p class="text-xs text-gray-500">{crew.job}</p>
+									<p class="text-xs text-white">{crew.job}</p>
+								</div>
 							</div>
 						{/each}
 					</div>
