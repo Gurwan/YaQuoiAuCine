@@ -27,10 +27,10 @@
 </script>
 
 <div
-	class="fixed inset-0 z-50 bg-black bg-opacity-60 backdrop-blur-sm md:fixed md:inset-auto md:right-0 md:top-0 md:h-screen md:w-[50vw] md:bg-transparent md:backdrop-blur-0"
+	class="fixed inset-0 z-50 backdrop-blur-sm md:static md:w-[50vw] md:bg-transparent md:backdrop-blur-0"
 >
 	<div class="h-full overflow-y-auto rounded-none shadow-xl md:rounded-l-xl">
-		<div class="relative h-56 overflow-hidden bg-stone-200 pb-8 md:h-72">
+		<div class="relative h-56 overflow-hidden pb-8 md:h-72">
 			<img
 				src={'https://image.tmdb.org/t/p/original' + selectedMovie.background}
 				alt={selectedMovie.title}
@@ -43,65 +43,69 @@
 			>
 
 			<div class="absolute bottom-4 left-4 right-4">
-				<h2 class="text-2xl font-semibold text-white drop-shadow-lg md:text-6xl">
+				<h2 class="text-2xl font-semibold antialiased text-white drop-shadow-lg md:text-6xl">
 					{selectedMovie.title}
 				</h2>
 			</div>
 		</div>
 
-		<div class="bg-white p-6 pt-4">
-			<p class="mb-4 text-sm">
-				Sorti le {selectedMovie.release_date} — {selectedMovie.duration} — ⭐ {selectedMovie.rating}
-				/ 10
-			</p>
+		<div class="bg-[url('background_panel.webp')] bg-repeat p-6 pt-4">
+			<div class="rounded-xl bg-white p-3 border-black border-4">
+				<p class="mb-4 text-sm">
+					Sorti le {selectedMovie.release_date} — {selectedMovie.duration} — ⭐ {selectedMovie.rating}
+					/ 10
+				</p>
 
-			<p class="mb-6">{selectedMovie.overview}</p>
+				<p class="mb-6">{selectedMovie.overview}</p>
 
-			<div class="grid grid-cols-1 gap-6 text-sm md:grid-cols-2">
-				<div>
-					<p><span class="font-semibold">Genres :</span> {selectedMovie.genres.join(', ')}</p>
+				<div class="grid grid-cols-1 gap-6 text-sm md:grid-cols-2">
+					<div>
+						<p><span class="font-semibold">Genres :</span> {selectedMovie.genres.join(', ')}</p>
 
-					<p><span class="font-semibold">Pays :</span> {selectedMovie.countries.join(', ')}</p>
+						<p><span class="font-semibold">Pays :</span> {selectedMovie.countries.join(', ')}</p>
 
-					<p>
-						<span class="font-semibold">Popularité :</span>
-						{getPopularityCategory(selectedMovie.popularity)}
-					</p>
-				</div>
-
-				<div>
-					{#if selectedMovie.budget}
 						<p>
-							<span class="font-semibold">Budget :</span>
-							{selectedMovie.budget.toLocaleString()} $
+							<span class="font-semibold">Popularité :</span>
+							{getPopularityCategory(selectedMovie.popularity)}
 						</p>
-					{/if}
+					</div>
 
-					{#if selectedMovie.revenue}
-						<p>
-							<span class="font-semibold">Revenus :</span>
-							{selectedMovie.revenue.toLocaleString()} $
-						</p>
-					{/if}
-
-					{#if selectedMovie.revenue && selectedMovie.budget}
-						{#if selectedMovie.budget * 2.5 < selectedMovie.revenue}
-							<p class="w-max rounded bg-green-500 px-3 py-1 text-white">Rentable</p>
-						{:else}
-							<p class="w-max rounded bg-red-500 px-3 py-1 text-white">Pas (encore) rentable</p>
+					<div>
+						{#if selectedMovie.budget}
+							<p>
+								<span class="font-semibold">Budget :</span>
+								{selectedMovie.budget.toLocaleString()} $
+							</p>
 						{/if}
-					{/if}
 
-					<p>
-						<span class="font-semibold">Studios :</span>
-						{selectedMovie.studios
-							.map((s: { name: string; origin_country: string }) => s.name)
-							.join(', ')}
-					</p>
+						{#if selectedMovie.revenue}
+							<p>
+								<span class="font-semibold">Revenus :</span>
+								{selectedMovie.revenue.toLocaleString()} $
+							</p>
+						{/if}
+
+						{#if selectedMovie.revenue && selectedMovie.budget}
+							{#if selectedMovie.budget * 2.5 < selectedMovie.revenue}
+								<p class="w-max rounded bg-green-500 px-3 py-1 text-white">Rentable</p>
+							{:else}
+								<p class="w-max rounded bg-red-500 px-3 py-1 text-white">Pas (encore) rentable</p>
+							{/if}
+						{/if}
+
+						<p>
+							<span class="font-semibold">Studios :</span>
+							{selectedMovie.studios
+								.map((s: { name: string; origin_country: string }) => s.name)
+								.join(', ')}
+						</p>
+					</div>
 				</div>
 			</div>
 
-			<div class="mt-3 bg-[url('background_actor.webp')] bg-top bg-repeat">
+			<div
+				class="border-6 mt-3 border-solid border-black bg-[url('background_actor.webp')] bg-top bg-repeat"
+			>
 				<h3 class="mb-2 bg-black p-2 text-center text-lg font-semibold text-white">Distribution</h3>
 
 				<div class="flex gap-4 overflow-x-auto">
@@ -128,7 +132,7 @@
 									{/if}
 								</div>
 
-								<div class="bg-black p-2">
+								<div class="mt-4 bg-black p-2">
 									<p class="mt-1 text-xs font-medium text-white">{actor.name}</p>
 
 									<p class="text-xs text-white">{actor.character}</p>
@@ -139,7 +143,9 @@
 				</div>
 			</div>
 
-			<div class="mt-1 bg-[url('background_crew.webp')] bg-top bg-repeat">
+			<div
+				class="border-6 mt-1 border-solid border-black bg-[url('background_crew.webp')] bg-top bg-repeat"
+			>
 				<h3 class="mb-2 bg-black p-2 text-center text-lg font-semibold text-white">Équipe</h3>
 
 				<div class="flex gap-4 overflow-x-auto">
@@ -166,7 +172,7 @@
 									{/if}
 								</div>
 
-								<div class="bg-black p-2">
+								<div class="mt-4 bg-black p-2">
 									<p class="mt-1 text-xs font-medium text-white">{crew.name}</p>
 
 									<p class="text-xs text-white">{crew.job}</p>

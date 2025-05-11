@@ -9,6 +9,7 @@
 			if (!response.ok) throw new Error('Erreur de chargement');
 
 			details = await response.json();
+			window.scrollTo({ top: 0, behavior: 'smooth' });
 		} catch (error) {
 			console.error('Erreur lors de l\'appel API à movie :', error);
 		}
