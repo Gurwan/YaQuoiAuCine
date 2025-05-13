@@ -4,7 +4,6 @@ import { Cache } from 'cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Movie, MovieDetails, MovieDetailsResponse, MovieResponse } from './interfaces/movie.interface';
-import axios from 'axios';
 
 @Injectable()
 export class AppService {
@@ -117,15 +116,6 @@ export class AppService {
     await this.cacheManager.set(cacheKey, movie);
 
     return movie;
-  }
-
-  async removeBackgroundFromUrl(url: string): Promise<string> {
-    const tmdbImageUrl = `https://image.tmdb.org/t/p/original${url}`;
-    const imageResponse = await this.httpService.axiosRef.get(tmdbImageUrl, {
-      responseType: 'arraybuffer'
-    });
-  
-   return "";
   }
 
   private durationToReadableFormat(duration: number): string {

@@ -29,7 +29,9 @@
 <div
 	class="fixed inset-0 z-50 backdrop-blur-sm md:static md:w-[50vw] md:bg-transparent md:backdrop-blur-0"
 >
-	<div class="h-full overflow-y-auto rounded-none shadow-xl md:rounded-l-xl">
+	<div
+		class="border-5 h-full overflow-y-auto rounded-none border-black shadow-xl md:h-auto md:rounded-xl"
+	>
 		<div class="relative h-56 overflow-hidden pb-8 md:h-72">
 			<img
 				src={'https://image.tmdb.org/t/p/original' + selectedMovie.background}
@@ -43,14 +45,14 @@
 			>
 
 			<div class="absolute bottom-4 left-4 right-4">
-				<h2 class="text-2xl font-semibold antialiased text-white drop-shadow-lg md:text-6xl">
+				<h2 class="text-2xl font-semibold text-white antialiased drop-shadow-lg md:text-6xl">
 					{selectedMovie.title}
 				</h2>
 			</div>
 		</div>
 
 		<div class="bg-[url('background_panel.webp')] bg-repeat p-6 pt-4">
-			<div class="rounded-xl bg-white p-3 border-black border-4">
+			<div class="rounded-xl border-4 border-black bg-white p-3">
 				<p class="mb-4 text-sm">
 					Sorti le {selectedMovie.release_date} — {selectedMovie.duration} — ⭐ {selectedMovie.rating}
 					/ 10

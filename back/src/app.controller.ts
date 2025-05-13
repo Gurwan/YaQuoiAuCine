@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Movie } from './interfaces/movie.interface';
 
@@ -14,10 +14,5 @@ export class AppController {
   @Get("movie/:id")
   async getMovie(@Param('id') id: number): Promise<Movie> {
     return this.appService.getMovieById(Number(id));
-  }
-
-  @Post("remove-background")
-  async removeBackground(@Body('url') url: string): Promise<string> {
-    return this.appService.removeBackgroundFromUrl(url);
   }
 }
