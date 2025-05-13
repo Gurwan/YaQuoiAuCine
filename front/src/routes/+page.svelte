@@ -10,11 +10,11 @@
 </script>
 
 <div class="mx-auto mt-6 max-w-screen-2xl px-4">
-	<nav class="flex flex-1 items-center justify-between bg-gray-800 p-4">
-		<div class="flex gap-14 items-center">
+	<nav class="flex flex-1 items-center justify-between bg-gray-800 p-2 md:p-4">
+		<div class="flex gap-3 md:gap-14 items-center">
 			<h1 class="logo">Y a quoi au ciné ?</h1>
 
-			<div class="flex gap-6 items-center">
+			<div class="flex gap-3 md:gap-6 items-center">
 				<a href="/">
 					<img src="affiche_tab_img.webp" alt="Home tab" />
 				</a>
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 
-		<div class="relative w-full max-w-xs">
+		<div class="relative w-full max-w-xs hidden md:block">
 			<input
 				type="text"
 				placeholder="Rechercher un film..."
