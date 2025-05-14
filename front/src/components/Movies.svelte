@@ -1,19 +1,30 @@
 <script lang="ts">
 	import MovieCard from './MovieCard.svelte';
+	import type { Movie } from '$lib/types/movie';
 
-	let { details = $bindable(), movies } = $props();
+	let {
+		details = $bindable(),
+		movies,
+		filter = $bindable()
+	}: { details: any; movies: Movie[]; filter: String } = $props();
+
+	let filteredMovies = $derived.by(() => {
+		return filter === ''
+			? movies
+			: movies.filter((movie: Movie) => movie.title.toLowerCase().includes(filter.toLowerCase()));
+	});
 </script>
 
-{#if movies?.length > 0}
+{#if filteredMovies?.length > 0}
 	{#if details}
 		<div class="mt-3 grid grid-cols-2 gap-4 p-4">
-			{#each movies as movie}
+			{#each filteredMovies as movie}
 				<MovieCard {movie} bind:details />
 			{/each}
 		</div>
 	{:else}
 		<div class="mt-3 grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-			{#each movies as movie}
+			{#each filteredMovies as movie}
 				<MovieCard {movie} bind:details />
 			{/each}
 		</div>

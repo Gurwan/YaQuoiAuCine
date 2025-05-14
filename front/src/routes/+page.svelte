@@ -5,6 +5,7 @@
 
 	let data = $props();
 	let movies: Movie[] = data.data.movies;
+	let searchInput = $state('');
 
 	let selectedMovie = $state();
 </script>
@@ -29,6 +30,7 @@
 			<input
 				type="text"
 				placeholder="Rechercher un film..."
+				bind:value={searchInput}
 				class="w-full rounded-full border border-gray-300 bg-white px-4 py-2 pr-10 text-sm text-black placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
 			/>
 
@@ -41,13 +43,13 @@
 	<div class="relative mt-6 flex flex-col gap-4 md:flex-row">
 		{#if selectedMovie}
 			<div class="w-full md:w-1/2">
-				<Movies {movies} bind:details={selectedMovie} />
+				<Movies {movies} bind:details={selectedMovie} bind:filter={searchInput} />
 			</div>
 
 			<MoviePanel bind:selectedMovie />
 		{:else}
 			<div class="w-full">
-				<Movies {movies} bind:details={selectedMovie} />
+				<Movies {movies} bind:details={selectedMovie} bind:filter={searchInput}/>
 			</div>
 		{/if}
 	</div>
