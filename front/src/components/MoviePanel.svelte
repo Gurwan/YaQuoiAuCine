@@ -54,8 +54,11 @@
 		<div class="bg-[url('background_panel.webp')] bg-repeat p-6 pt-4">
 			<div class="rounded-xl border-4 border-black bg-white p-3">
 				<p class="mb-4 text-sm">
-					Sorti le {selectedMovie.release_date} — {selectedMovie.duration} — ⭐ {selectedMovie.rating}
-					/ 10
+					Sorti le {selectedMovie.release_date} — {selectedMovie.duration}
+					{#if selectedMovie.rating > 0}
+						— ⭐ {selectedMovie.rating}
+						/ 10
+					{/if}
 				</p>
 
 				<p class="mb-6">{selectedMovie.overview}</p>

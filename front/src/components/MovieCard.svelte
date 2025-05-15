@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Movie } from "$lib/types/movie";
+	import type { Movie } from '$lib/types/movie';
 
 	let { details = $bindable(), movie } = $props();
 
@@ -11,7 +11,7 @@
 			details = await response.json();
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		} catch (error) {
-			console.error('Erreur lors de l\'appel API à movie :', error);
+			console.error("Erreur lors de l'appel API à movie :", error);
 		}
 	}
 </script>
@@ -34,12 +34,14 @@
 				class="h-auto w-full rounded object-cover shadow-lg"
 			/>
 		{/if}
-
-		<div
-			class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100"
-		>
-			★ {movie.rating.toFixed(1)} / 10
-		</div>
+		
+		{#if movie.rating > 0}
+			<div
+				class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100"
+			>
+				★ {movie.rating.toFixed(1)} / 10
+			</div>
+		{/if}
 	</div>
 	<h2 class="mt-2 truncate text-center text-sm font-medium text-gray-800 sm:text-base">
 		{movie.title}

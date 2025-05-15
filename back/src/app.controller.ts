@@ -11,6 +11,11 @@ export class AppController {
     return this.appService.getNowPlayingFrance(page);
   }
 
+  @Get("upcoming")
+  async getUpcomingMovies(@Query('page') page = 1): Promise<Movie[]> {
+    return this.appService.getUpcomingFrance(page);
+  }
+
   @Get("movie/:id")
   async getMovie(@Param('id') id: number): Promise<Movie> {
     return this.appService.getMovieById(Number(id));
