@@ -33,7 +33,10 @@ export class AppService {
       const urlPage = `${url}?api_key=${this.apiKey}&language=fr-FR&region=FR&page=${i}`;
       const response = await this.httpService.axiosRef.get(urlPage);
 
-      const mappedMovie = response.data.results.map((movie: MovieResponse): Movie => ({
+      const mappedMovie = response.data.results.filter((movie: MovieResponse) => {
+        const releaseDate = new Date(movie.release_date);
+        return !isNaN(releaseDate.getTime()) && releaseDate <= new Date();
+      }).map((movie: MovieResponse): Movie => ({
         id: movie.id,
         title: movie.title,
         poster: movie.poster_path,

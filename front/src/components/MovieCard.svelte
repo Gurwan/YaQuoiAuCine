@@ -1,7 +1,13 @@
 <script lang="ts">
 	import type { Movie } from '$lib/types/movie';
+	import { Utils } from '../utils';
 
 	let { details = $bindable(), movie } = $props();
+
+	const isReleased = $derived.by(() => {
+		if (!movie?.release_date) return false;
+		return Utils.getReleaseDateFormatted(movie.release_date) < new Date();
+	});
 
 	async function openMovie(movie: Movie) {
 		try {
@@ -34,8 +40,14 @@
 				class="h-auto w-full rounded object-cover shadow-lg"
 			/>
 		{/if}
-		
-		{#if movie.rating > 0}
+
+		{#if !isReleased}
+			<div
+				class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100"
+			>
+				{movie.release_date}
+			</div>
+		{:else if movie.rating > 0}
 			<div
 				class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-2 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100"
 			>
