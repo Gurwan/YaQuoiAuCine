@@ -3,7 +3,7 @@ import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Cache } from 'cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Movie, MovieDetails, MovieDetailsResponse, MovieResponse } from './interfaces/movie.interface';
+import { Movie, MovieDetails, MovieDetailsResponse, MovieResponse } from '../interfaces/movie.interface';
 
 @Injectable()
 export class AppService {

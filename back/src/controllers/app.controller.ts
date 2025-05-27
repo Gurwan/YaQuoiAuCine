@@ -1,6 +1,6 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
-import { AppService } from './app.service';
-import { Movie } from './interfaces/movie.interface';
+import { AppService } from '../services/app.service';
+import { Movie } from '../interfaces/movie.interface';
 
 @Controller()
 export class AppController {
