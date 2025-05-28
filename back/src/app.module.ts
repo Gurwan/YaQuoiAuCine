@@ -5,6 +5,8 @@ import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
 import { CacheModule } from '@nestjs/cache-manager';
 import * as redisStore from 'cache-manager-ioredis';
+import { BoxOfficeController } from './controllers/boxoffice.controller';
+import { BoxOfficeService } from './services/boxoffice.service';
 
 @Module({
   imports: [
@@ -21,8 +23,8 @@ import * as redisStore from 'cache-manager-ioredis';
     }),
     HttpModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, BoxOfficeController],
+  providers: [AppService, BoxOfficeService],
 })
 export class AppModule { 
 

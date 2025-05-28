@@ -1,9 +1,9 @@
 import { Injectable, OnModuleInit } from "@nestjs/common";
-import path from "path";
+import * as path from "path";
 import * as fs from 'fs/promises';
 
 @Injectable()
-export class DataService implements OnModuleInit {
+export class BoxOfficeService implements OnModuleInit {
   private readonly filePath = path.join(__dirname, '..', '..', 'storage', 'boxoffice.json');
   private data: Record<string, string> = {};
 
