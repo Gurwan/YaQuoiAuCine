@@ -90,6 +90,13 @@
 							</p>
 						{/if}
 
+						{#if selectedMovie.boxoffice_france && selectedMovie.boxoffice_france !== '0' && selectedMovie.boxoffice_france !== '-'}
+							<p>
+								<span class="font-semibold">Entrées en France :</span>
+								{selectedMovie.boxoffice_france}
+							</p>
+						{/if}
+
 						{#if selectedMovie.revenue && selectedMovie.budget}
 							{#if selectedMovie.budget * 2.5 < selectedMovie.revenue}
 								<p class="w-max rounded bg-green-500 px-3 py-1 text-white">Rentable</p>
@@ -115,7 +122,7 @@
 
 				<div class="flex gap-4 overflow-x-auto">
 					<div class="flex space-x-6 p-3">
-						{#each selectedMovie.credits.cast as actor (actor.name)}
+						{#each selectedMovie.credits.cast as actor, index (actor.name + '|' + index)}
 							<div
 								class="group relative flex w-28 flex-shrink-0 flex-col items-center justify-center text-center"
 							>
@@ -155,7 +162,7 @@
 
 				<div class="flex gap-4 overflow-x-auto">
 					<div class="flex space-x-6 p-3">
-						{#each selectedMovie.credits.crew as crew (crew.name + ' | ' + crew.job)}
+						{#each selectedMovie.credits.crew as crew, index (crew.name + ' | ' + crew.job + ' | ' + index)}
 							<div
 								class="group relative flex w-28 flex-shrink-0 flex-col items-center justify-center text-center"
 							>

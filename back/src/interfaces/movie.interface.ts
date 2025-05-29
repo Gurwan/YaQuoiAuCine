@@ -1,6 +1,6 @@
 export interface MovieResponse {
     id: number;
-    title: string; 
+    title: string;
     poster_path?: string;
     release_date: string;
     vote_average: number;
@@ -14,8 +14,9 @@ export interface Movie {
     poster?: string;
     release_date: string;
     rating: number;
-    overview: string;   
+    overview: string;
     language?: string;
+    boxoffice_france?: string;
 }
 
 interface MoviePeople {
@@ -41,10 +42,10 @@ export interface MovieCredits {
 export interface MovieDetailsResponse extends MovieResponse {
     revenue?: number;
     budget?: number;
-    genres: {name: string}[];
-    production_countries: {iso_3166_1: string}[];
+    genres: { name: string }[];
+    production_countries: { iso_3166_1: string }[];
     popularity: number;
-    production_companies: {name: string, origin_country: string}[];
+    production_companies: { name: string, origin_country: string }[];
     runtime: number;
     backdrop_path: string;
     credits: MovieCredits;
@@ -56,7 +57,7 @@ export interface MovieDetails extends Movie {
     genres: string[];
     countries: string[];
     popularity: number;
-    studios: {name: string, country: string}[];
+    studios: { name: string, country: string }[];
     duration: string;
     background: string;
     credits: MovieCredits;

@@ -25,6 +25,16 @@ export class BoxOfficeService implements OnModuleInit {
     return this.data[id] ?? null;
   }
 
+  getOrInit(id: string): string {
+    const value = this.get(id);
+    if (!value) {
+      const ret = '-';
+      this.set(id, ret);
+      return ret;
+    }
+    return value;
+  }
+
   async set(id: string, value: string) {
     this.data[id] = value;
     await this.saveData();
@@ -33,6 +43,15 @@ export class BoxOfficeService implements OnModuleInit {
   async delete(id: string) {
     delete this.data[id];
     await this.saveData();
+  }
+
+  async clear(ids: string[]) {
+    for (const key in this.data) {
+    if (!ids.includes(key)) {
+      delete this.data[key];
+      await this.saveData();
+    }
+  }
   }
 
   private async saveData() {

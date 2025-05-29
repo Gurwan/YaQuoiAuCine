@@ -4,6 +4,7 @@ import { Cache } from 'cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Movie, MovieDetails, MovieDetailsResponse, MovieResponse } from '../interfaces/movie.interface';
+import { BoxofficeService } from './boxoffice.service';
 
 @Injectable()
 export class AppService {
@@ -12,6 +13,7 @@ export class AppService {
 
   constructor(
     private configService: ConfigService,
+    private boxofficeService: BoxofficeService,
     private httpService: HttpService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {
@@ -43,13 +45,15 @@ export class AppService {
         release_date: Intl.DateTimeFormat('fr-FR').format(new Date(movie.release_date)),
         rating: Number(movie.vote_average.toFixed(2)),
         overview: movie.overview,
-        language: movie.original_language
+        language: movie.original_language,
+        boxoffice_france: this.boxofficeService.getOrInit(movie.title)
       }));
 
       moviesResults.push(...mappedMovie);
     }
 
     const moviesSorted = this.sortMoviesResults(moviesResults);
+    this.boxofficeService.clear(moviesSorted.map(movie => movie.title));
 
     await this.cacheManager.set(cacheKey, moviesSorted);
 
@@ -131,6 +135,7 @@ export class AppService {
       genres: response.genres.map((genre) => genre.name),
       countries: response.production_countries.map((country) => country.iso_3166_1),
       popularity: response.popularity,
+      boxoffice_france: this.boxofficeService.getOrInit(response.title),
       background: response.backdrop_path,
       studios: response.production_companies.map((company) => ({
         name: company.name,

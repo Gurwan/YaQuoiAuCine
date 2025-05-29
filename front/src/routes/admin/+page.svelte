@@ -53,8 +53,6 @@
 	};
 </script>
 
-<h1>Box Office</h1>
-
 <table>
 	<thead>
 		<tr>
@@ -76,7 +74,10 @@
 					/>
 				</td>
 				<td>
-					<button onclick={() => deleteEntry(key)}>Supprimer</button>
+					<button onclick={() => deleteEntry(key)}><i class="fa-solid fa-trash"></i></button>
+					<button onclick={() => hideMovie(key)}><i class="fa-solid fa-eye-slash"></i></button>
+					<button onclick={() => upMovie(key)}><i class="fa-solid fa-plus"></i></button>
+					<button onclick={() => downMovie(key)}><i class="fa-solid fa-minus"></i></button>
 				</td>
 			</tr>
 		{/each}
