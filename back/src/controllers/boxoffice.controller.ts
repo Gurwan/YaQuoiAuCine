@@ -1,11 +1,11 @@
 import { Controller, Get, Param, Put, Delete, Body, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '../guards/auth.guard';
-import { BoxOfficeService } from 'src/services/boxoffice.service';
+import { BoxofficeService } from 'src/services/boxoffice.service';
 
 @UseGuards(AuthGuard)
 @Controller('boxoffice')
-export class BoxOfficeController {
-  constructor(private readonly boxofficeService: BoxOfficeService) {}
+export class BoxofficeController {
+  constructor(private readonly boxofficeService: BoxofficeService) {}
 
   @Get()
   getAll() {

@@ -3,7 +3,7 @@ import * as path from "path";
 import * as fs from 'fs/promises';
 
 @Injectable()
-export class BoxOfficeService implements OnModuleInit {
+export class BoxofficeService implements OnModuleInit {
   private readonly filePath = path.join(__dirname, '..', '..', 'storage', 'boxoffice.json');
   private data: Record<string, string> = {};
 

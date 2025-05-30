@@ -11,35 +11,39 @@
 <svelte:head>
 	<script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
 	<script>
-	  window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
-	  formbutton("create", {
-	    action: "https://formspree.io/f/xbloeobg",
-	    title: "Besoin d'aide ?",
-	    fields: [
-	      { 
-	        type: "email", 
-	        label: "Email :", 
-	        name: "email",
-	        required: true,
-	        placeholder: "tonadressemail@gmail.com"
-	      },
-	      {
-	        type: "textarea",
-	        label: "Message :",
-	        name: "message",
-	        placeholder: "Qu'est que vous voulez nous transmettre ?",
-	      },
-	      { type: "submit" }      
-	    ],
-	    styles: {
-	      title: {
-	        backgroundColor: "orange"
-	      },
-	      button: {
-	        backgroundColor: "orange"
-	      }
-	    }
-	  });
+		window.formbutton =
+			window.formbutton ||
+			function () {
+				(formbutton.q = formbutton.q || []).push(arguments);
+			};
+		formbutton('create', {
+			action: 'https://formspree.io/f/xbloeobg',
+			title: "Besoin d'aide ?",
+			fields: [
+				{
+					type: 'email',
+					label: 'Email :',
+					name: 'email',
+					required: true,
+					placeholder: 'tonadressemail@gmail.com'
+				},
+				{
+					type: 'textarea',
+					label: 'Message :',
+					name: 'message',
+					placeholder: "Qu'est que vous voulez nous transmettre ?"
+				},
+				{ type: 'submit' }
+			],
+			styles: {
+				title: {
+					backgroundColor: 'orange'
+				},
+				button: {
+					backgroundColor: 'orange'
+				}
+			}
+		});
 	</script>
 </svelte:head>
 
@@ -77,9 +81,20 @@
 
 	<footer class="m-4 rounded-lg bg-white shadow-sm dark:bg-gray-900">
 		<div class="mx-auto w-full max-w-screen-xl p-4 md:py-8">
+			<a
+				href="/ia"
+				class="block text-sm text-gray-500 hover:underline sm:text-center dark:text-gray-400"
+				>Utilisation de l'intelligence artificielle</a
+			>
+			<a
+				href="/privacy-policy"
+				class="block text-sm text-gray-500 hover:underline sm:text-center dark:text-gray-400"
+				>Règles de Confidentialité</a
+			>
 			<hr class="my-6 border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700" />
 			<span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
-				>© 2025 <a href="/" class="hover:underline">Y a quoi au ciné™</a>. All Rights Reserved.</span
+				>© 2025 <a href="/" class="hover:underline">Y a quoi au ciné™</a>. Version 1.0.0. All
+				Rights Reserved.</span
 			>
 		</div>
 	</footer>
