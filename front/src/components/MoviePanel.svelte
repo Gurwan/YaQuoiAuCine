@@ -90,10 +90,10 @@
 							</p>
 						{/if}
 
-						{#if selectedMovie.boxoffice_france && selectedMovie.boxoffice_france !== '0' && selectedMovie.boxoffice_france !== '-'}
+						{#if selectedMovie.json?.boxoffice}
 							<p>
 								<span class="font-semibold">Entrées en France :</span>
-								{selectedMovie.boxoffice_france}
+								{selectedMovie.json?.boxoffice}
 							</p>
 						{/if}
 

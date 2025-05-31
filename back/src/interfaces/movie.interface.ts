@@ -16,7 +16,7 @@ export interface Movie {
     rating: number;
     overview: string;
     language?: string;
-    boxoffice_france?: string;
+    json?: MovieJson;
 }
 
 interface MoviePeople {
@@ -63,3 +63,8 @@ export interface MovieDetails extends Movie {
     credits: MovieCredits;
 }
 
+export interface MovieJson {
+    boxoffice: number | null;
+    position: number | null;
+    hidden: boolean;
+}
