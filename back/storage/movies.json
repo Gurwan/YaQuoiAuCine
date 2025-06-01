@@ -1,412 +1,452 @@
 {
   "Lilo & Stitch": {
     "boxoffice": 1325000,
-    "position": null,
+    "position": 0,
     "hidden": false
   },
   "Destination finale : Bloodlines": {
     "boxoffice": 591000,
-    "position": null,
+    "position": 4,
     "hidden": false
   },
   "Until Dawn : La Mort sans fin": {
     "boxoffice": 405000,
-    "position": null,
+    "position": 10,
     "hidden": false
   },
   "Mission: Impossible - The Final Reckoning": {
     "boxoffice": 866000,
-    "position": null,
+    "position": 1,
     "hidden": false
   },
   "La Légende d'Ochi": {
     "boxoffice": 83000,
-    "position": null,
-    "hidden": false
+    "position": 21,
+    "hidden": true
   },
   "Thunderbolts*": {
     "boxoffice": 1002000,
-    "position": null,
+    "position": 6,
     "hidden": false
   },
   "Mr. Wolff 2": {
     "boxoffice": null,
-    "position": null,
+    "position": 26,
     "hidden": true
   },
   "The Phoenician Scheme": {
     "boxoffice": null,
-    "position": null,
+    "position": 5,
     "hidden": false
   },
   "Drop Game": {
     "boxoffice": 97000,
-    "position": null,
+    "position": 12,
     "hidden": false
   },
   "The Woman in the Yard": {
     "boxoffice": null,
-    "position": null,
+    "position": 29,
     "hidden": true
   },
   "Ne Zha 2": {
     "boxoffice": null,
-    "position": null,
-    "hidden": false
+    "position": 31,
+    "hidden": true
   },
   "Back to Business": {
     "boxoffice": null,
-    "position": null,
-    "hidden": false
+    "position": 38,
+    "hidden": true
   },
   "L'Ultime braquage": {
-    "boxoffice": 12,
-    "position": null,
+    "boxoffice": null,
+    "position": 3,
     "hidden": true
   },
   "Hurry Up Tomorrow": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 54000,
+    "position": 8,
     "hidden": false
   },
   "Les Indomptés": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 19244,
+    "position": 22,
     "hidden": false
   },
   "Tu ne mentiras point": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 128000,
+    "position": 24,
     "hidden": false
   },
   "ரெட்ரோ": {
     "boxoffice": null,
-    "position": null,
+    "position": 28,
     "hidden": false
   },
   "Thudarum": {
     "boxoffice": null,
-    "position": null,
+    "position": 30,
     "hidden": false
   },
   "Le Clan des bêtes": {
     "boxoffice": null,
-    "position": null,
+    "position": 32,
     "hidden": false
   },
   "La venue de l'avenir": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 191000,
+    "position": 2,
     "hidden": false
   },
   "Les maudites": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 14000,
+    "position": 13,
     "hidden": false
   },
   "Rumours, nuit blanche au sommet": {
     "boxoffice": null,
-    "position": null,
+    "position": 33,
     "hidden": false
   },
   "Accident domestique": {
     "boxoffice": null,
-    "position": null,
+    "position": 34,
     "hidden": false
   },
   "Gangers": {
     "boxoffice": null,
-    "position": null,
+    "position": 35,
     "hidden": false
   },
   "Les Linceuls": {
     "boxoffice": null,
-    "position": null,
+    "position": 36,
     "hidden": false
   },
   "Chime": {
     "boxoffice": null,
-    "position": null,
+    "position": 14,
     "hidden": false
   },
   "Jeunes mères": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 44000,
+    "position": 19,
     "hidden": false
   },
   "Partir un jour": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 362000,
+    "position": 7,
     "hidden": false
   },
   "Hot Milk": {
     "boxoffice": null,
-    "position": null,
+    "position": 11,
     "hidden": false
   },
   "Ghostlight": {
     "boxoffice": null,
-    "position": null,
+    "position": 37,
     "hidden": false
   },
   "Les fleurs du silence": {
     "boxoffice": null,
-    "position": null,
+    "position": 39,
     "hidden": false
   },
   "Diplodocus": {
     "boxoffice": null,
-    "position": null,
+    "position": 40,
     "hidden": false
   },
   "The Shameless": {
     "boxoffice": null,
-    "position": null,
+    "position": 41,
     "hidden": false
   },
   "Another End": {
     "boxoffice": null,
-    "position": null,
+    "position": 42,
     "hidden": false
   },
   "Les Enfants rouges": {
     "boxoffice": null,
-    "position": null,
+    "position": 43,
     "hidden": false
   },
   "La mitad de Ana": {
     "boxoffice": null,
-    "position": null,
+    "position": 44,
     "hidden": false
   },
   "L'amour, c'est surcoté": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 434000,
+    "position": 9,
     "hidden": false
   },
   "Moi, ma mère et les autres": {
     "boxoffice": null,
-    "position": null,
+    "position": 45,
     "hidden": false
   },
   "Marco, l’énigme d’une vie": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 32000,
+    "position": 20,
     "hidden": false
   },
   "Little Jaffna": {
     "boxoffice": null,
-    "position": null,
+    "position": 46,
     "hidden": false
   },
   "Ce nouvel an qui n'est jamais arrivé": {
     "boxoffice": null,
-    "position": null,
+    "position": 47,
     "hidden": false
   },
   "Peppa rencontre le bébé au cinéma": {
     "boxoffice": null,
-    "position": null,
+    "position": 48,
     "hidden": false
   },
   "Egoist": {
     "boxoffice": null,
-    "position": null,
+    "position": 49,
     "hidden": false
   },
   "The Gazer": {
     "boxoffice": null,
-    "position": null,
+    "position": 50,
     "hidden": false
   },
   "Des jours meilleurs": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 455000,
+    "position": 17,
     "hidden": false
   },
   "La Chambre de Mariana": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 164000,
+    "position": 16,
     "hidden": false
   },
   "Transmitzvah": {
     "boxoffice": null,
-    "position": null,
+    "position": 51,
     "hidden": false
   },
   "Ingeborg Bachmann": {
     "boxoffice": null,
-    "position": null,
+    "position": 52,
     "hidden": false
   },
   "Les musiciens": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 241000,
+    "position": 15,
     "hidden": false
   },
   "Coursier de nuit": {
     "boxoffice": null,
-    "position": null,
+    "position": 53,
     "hidden": false
   },
   "Star Rail LIVE 2025 - Honkai: Star Rail 2nd Anniversary Concert": {
     "boxoffice": null,
-    "position": null,
+    "position": 54,
     "hidden": false
   },
   "Simón de la montaña": {
     "boxoffice": null,
-    "position": null,
+    "position": 55,
     "hidden": false
   },
   "Ollie": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 10000,
+    "position": 18,
     "hidden": false
   },
   "Un monde merveilleux": {
     "boxoffice": null,
-    "position": null,
+    "position": 56,
     "hidden": false
   },
   "椒麻堂会": {
     "boxoffice": null,
-    "position": null,
+    "position": 57,
     "hidden": false
   },
   "Les arènes": {
     "boxoffice": null,
-    "position": null,
+    "position": 58,
     "hidden": false
   },
   "Coka Chicas": {
     "boxoffice": null,
-    "position": null,
+    "position": 59,
     "hidden": false
   },
   "Un médecin pour la paix": {
     "boxoffice": null,
-    "position": null,
+    "position": 60,
     "hidden": false
   },
   "L'Effacement": {
     "boxoffice": null,
-    "position": null,
+    "position": 61,
     "hidden": false
   },
   "L'Île des Faisans": {
     "boxoffice": null,
-    "position": null,
+    "position": 62,
     "hidden": false
   },
   "Une pointe d'amour": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 117000,
+    "position": 25,
     "hidden": false
   },
   "Mexico 86": {
     "boxoffice": null,
-    "position": null,
+    "position": 63,
     "hidden": false
   },
   "De mauvaise foi": {
-    "boxoffice": null,
-    "position": null,
+    "boxoffice": 70000,
+    "position": 23,
     "hidden": false
   },
   "Promesse": {
     "boxoffice": null,
-    "position": null,
+    "position": 64,
     "hidden": false
   },
   "Se souvenir des tournesols": {
     "boxoffice": null,
-    "position": null,
+    "position": 65,
     "hidden": false
   },
   "Le domaine": {
     "boxoffice": null,
-    "position": null,
+    "position": 66,
     "hidden": false
   },
   "Damnées en fuite": {
     "boxoffice": null,
-    "position": null,
+    "position": 67,
     "hidden": false
   },
   "La Liste de Schindler: la Véritable Histoire": {
     "boxoffice": null,
-    "position": null,
+    "position": 68,
     "hidden": false
   },
   "Les Règles de l'art": {
     "boxoffice": null,
-    "position": null,
+    "position": 69,
     "hidden": false
   },
   "Soudan, souviens-toi": {
     "boxoffice": null,
-    "position": null,
+    "position": 70,
     "hidden": false
   },
   "L’Odyssée d’Atlas": {
     "boxoffice": null,
-    "position": null,
+    "position": 71,
     "hidden": false
   },
   "Gérald le Conquérant": {
     "boxoffice": null,
-    "position": null,
+    "position": 72,
     "hidden": false
   },
   "Alterlove": {
     "boxoffice": null,
-    "position": null,
+    "position": 73,
     "hidden": false
   },
   "R.E.M.": {
     "boxoffice": null,
-    "position": null,
+    "position": 74,
     "hidden": false
   },
   "INSIDE: Narrative of Our Journey": {
     "boxoffice": null,
-    "position": null,
+    "position": 75,
     "hidden": false
   },
   "La Découverte de la Chouette d'Or": {
     "boxoffice": null,
-    "position": null,
+    "position": 76,
     "hidden": false
   },
   "Sublime": {
     "boxoffice": null,
-    "position": null,
+    "position": 77,
     "hidden": false
   },
   "La Tournée du Trio": {
     "boxoffice": null,
-    "position": null,
+    "position": 78,
     "hidden": false
   },
   "Luz": {
     "boxoffice": null,
-    "position": null,
+    "position": 79,
     "hidden": false
   },
   "Génération 90 - Les secrets des séries culte": {
     "boxoffice": null,
-    "position": null,
+    "position": 80,
     "hidden": false
   },
   "Bernadette de Lourdes : le spectacle au cinéma": {
     "boxoffice": null,
-    "position": null,
+    "position": 81,
     "hidden": false
   },
   "L'araignée au fond de la cour": {
     "boxoffice": null,
-    "position": null,
+    "position": 82,
+    "hidden": false
+  },
+  "Milli Vanilli, de la gloire au cauchemar": {
+    "boxoffice": null,
+    "position": 83,
+    "hidden": false
+  },
+  "Familia": {
+    "boxoffice": null,
+    "position": 84,
+    "hidden": false
+  },
+  "Else": {
+    "boxoffice": null,
+    "position": 85,
+    "hidden": false
+  },
+  "Anges & Cie": {
+    "boxoffice": 105000,
+    "position": 27,
+    "hidden": false
+  },
+  "Yuzu-Justice est en Péril": {
+    "boxoffice": null,
+    "position": 86,
+    "hidden": false
+  },
+  "Fačuk": {
+    "boxoffice": null,
+    "position": 87,
+    "hidden": false
+  },
+  "Timpi Tampa": {
+    "boxoffice": null,
+    "position": 88,
+    "hidden": false
+  },
+  "Cleanliness": {
+    "boxoffice": null,
+    "position": 89,
     "hidden": false
   }
 }

@@ -93,7 +93,7 @@
 						{#if selectedMovie.json?.boxoffice}
 							<p>
 								<span class="font-semibold">Entrées en France :</span>
-								{selectedMovie.json?.boxoffice}
+								{selectedMovie.json?.boxoffice.toLocaleString('fr-FR')}
 							</p>
 						{/if}
 

@@ -7,6 +7,11 @@
 
 	let data = $props();
 	let movies: Movie[] = data.data.movies;
+
+	movies = [...movies].sort(
+		(a, b) => (a.json?.position ?? 0) - (b.json?.position ?? 0)
+	);
+
 	const searchInput = getContext<Writable<string>>('searchInput');
 
 	let selectedMovie = $state();
