@@ -87,30 +87,9 @@ export class AppService {
 
       moviesResults.push(...mappedMovie);
     }
+    await this.cacheManager.set(cacheKey, moviesResults);
 
-    const moviesSorted = this.sortMoviesResults(moviesResults);
-
-    await this.cacheManager.set(cacheKey, moviesSorted);
-
-    return moviesSorted;
-  }
-
-  private sortMoviesResults(moviesResults: Movie[]) {
-    const frenchMovies = moviesResults
-      .slice(7)
-      .filter(movie => movie.language === 'fr')
-      .slice(0, 6);
-
-    const frenchMovieIds = new Set(frenchMovies.map(m => m.id));
-    const filteredMovies = moviesResults.filter(m => !frenchMovieIds.has(m.id));
-
-    const result = [
-      ...filteredMovies.slice(0, 7),
-      ...frenchMovies,
-      ...filteredMovies.slice(7)
-    ];
-
-    return result;
+    return moviesResults;
   }
 
   async getMovieById(id: number): Promise<Movie> {

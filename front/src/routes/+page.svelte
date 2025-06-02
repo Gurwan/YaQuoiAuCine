@@ -8,9 +8,20 @@
 	let data = $props();
 	let movies: Movie[] = data.data.movies;
 
-	movies = [...movies].sort(
-		(a, b) => (a.json?.position ?? 0) - (b.json?.position ?? 0)
-	);
+	movies = [...movies]
+		.sort((a, b) => (a.json?.position ?? 0) - (b.json?.position ?? 0))
+		.filter(
+			((movie) => {
+				const seenTitles = new Set();
+				return (m) => {
+					if (seenTitles.has(m.title)) {
+						return false;
+					}
+					seenTitles.add(m.title);
+					return true;
+				};
+			})()
+		);
 
 	const searchInput = getContext<Writable<string>>('searchInput');
 
