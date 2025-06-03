@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Movie } from '$lib/types/movie';
 	import { Utils } from '../utils';
+	import { PUBLIC_API_URL } from '$env/static/public';
 
 	let { details = $bindable(), movie } = $props();
 
@@ -11,7 +12,7 @@
 
 	async function openMovie(movie: Movie) {
 		try {
-			const response = await fetch(`http://localhost:3000/movie/${movie.id}`);
+			const response = await fetch(`${PUBLIC_API_URL}/movie/${movie.id}`);
 			if (!response.ok) throw new Error('Erreur de chargement');
 
 			details = await response.json();

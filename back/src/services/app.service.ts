@@ -25,7 +25,7 @@ export class AppService {
 
     const cached = await this.cacheManager.get<Movie[]>(cacheKey);
     if (cached) {
-      return cached;
+      return this.filterHiddenMovies(cached);
     }
 
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}&language=fr-FR&region=FR`;
@@ -52,12 +52,11 @@ export class AppService {
       moviesResults.push(...mappedMovie);
     }
 
-    const moviesSorted = this.sortMoviesResults(moviesResults);
-    this.boxofficeService.clear(moviesSorted.map(movie => movie.title));
+    this.boxofficeService.clear(moviesResults.map(movie => movie.title));
 
-    await this.cacheManager.set(cacheKey, moviesSorted);
+    await this.cacheManager.set(cacheKey, moviesResults);
 
-    return this.filterHiddenMovies(moviesSorted);
+    return this.filterHiddenMovies(moviesResults);
   }
 
   async getUpcomingFrance(page = 1): Promise<Movie[]> {

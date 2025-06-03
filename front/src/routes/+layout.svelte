@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { afterNavigate } from '$app/navigation';
 	import '../app.css';
-	import { setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { writable } from 'svelte/store';
 
 	let { children } = $props();
@@ -9,6 +10,9 @@
 </script>
 
 <svelte:head>
+	<title>Y a quoi au ciné ?</title>
+	<meta name="description" content="Envie de voir rapidement ce qu'il y a au cinéma en ce moment ? Quel film aller voir ? Accéder rapidement au résumé et voir si c'est le genre de film qui te correspond ? Tu peux aussi accéder à la liste des prochaines sorties ciné et garder un oeil sur le boxoffice."/>
+
 	<script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
 	<script>
 		window.formbutton =
@@ -44,6 +48,17 @@
 				}
 			}
 		});
+	</script>
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-X1MHRMPGPY"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-X1MHRMPGPY');
 	</script>
 </svelte:head>
 

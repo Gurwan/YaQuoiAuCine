@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { invalidate } from '$app/navigation';
-	import { PUBLIC_TOKEN_BOXOFFICE } from '$env/static/public';
+	import { PUBLIC_TOKEN_BOXOFFICE, PUBLIC_API_URL } from '$env/static/public';
 	import type { MovieJson } from '$lib/types/movie-json.js';
 	import { get, writable } from 'svelte/store';
 
@@ -17,7 +16,7 @@
 
 	const addEntry = async () => {
 		if (!state.newKey || !state.newValue) return;
-		await fetch(`http://localhost:3000/admin/${state.newKey}`, {
+		await fetch(`${PUBLIC_API_URL}/admin/${state.newKey}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -45,7 +44,7 @@
 
 	const updateEntry = async (key: string, value: MovieJson) => {
 		if (value) {
-			await fetch(`http://localhost:3000/admin/${key}`, {
+			await fetch(`${PUBLIC_API_URL}/admin/${key}`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
@@ -76,7 +75,7 @@
 	};
 
 	const deleteEntry = async (key: string) => {
-		await fetch(`http://localhost:3000/admin/${key}`, {
+		await fetch(`${PUBLIC_API_URL}/admin/${key}`, {
 			method: 'DELETE',
 			headers: {
 				Authorization: token

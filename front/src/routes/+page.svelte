@@ -6,7 +6,7 @@
 	import { type Writable } from 'svelte/store';
 
 	let data = $props();
-	let movies: Movie[] = data.data.movies;
+	let movies = $state<Movie[]>(data.data.movies);
 
 	movies = [...movies]
 		.sort((a, b) => (a.json?.position ?? 0) - (b.json?.position ?? 0))
