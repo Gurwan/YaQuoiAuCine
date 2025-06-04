@@ -64,7 +64,7 @@ export class AppService {
 
     const cached = await this.cacheManager.get<Movie[]>(cacheKey);
     if (cached) {
-      return cached;
+      return this.sortByDate(cached);
     }
 
     const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${this.apiKey}&language=fr-FR&region=FR`;
@@ -88,7 +88,7 @@ export class AppService {
     }
     await this.cacheManager.set(cacheKey, moviesResults);
 
-    return moviesResults;
+    return this.sortByDate(moviesResults);
   }
 
   async getMovieById(id: number): Promise<Movie> {
@@ -159,5 +159,11 @@ export class AppService {
     const hiddenMoviesJson = this.boxofficeService.getHidden();
 
     return movies.filter(movie => !(movie.title in hiddenMoviesJson));
+  }
+
+  private sortByDate(movies: Movie[]): Movie[] {
+    return movies.sort((a, b) => {
+      return new Date(a.release_date).getTime() - new Date(b.release_date).getTime(); 
+    });
   }
 }
