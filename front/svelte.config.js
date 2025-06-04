@@ -1,4 +1,6 @@
+//import adapter from '@sveltejs/adapter-static'; //android
 import adapter from '@sveltejs/adapter-netlify';
+
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 const config = {
@@ -7,6 +9,11 @@ const config = {
 	},
 	preprocess: vitePreprocess(),
 	kit: {
+		/* adapter: adapter({
+			pages: 'dist',
+			assets: 'dist',
+			fallback: 'index.html' 
+		}) */ //android
 		adapter: adapter()
 	}
 };
