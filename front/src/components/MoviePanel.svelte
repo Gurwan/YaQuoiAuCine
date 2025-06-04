@@ -53,7 +53,7 @@
 			</div>
 		</div>
 
-		<div class="bg-[url('background_panel.webp')] bg-repeat p-6 pt-4">
+		<div class="bg-[url('/background_panel.webp')] bg-repeat p-6 pt-4">
 			<div class="rounded-xl border-4 border-black bg-white p-3">
 				<p class="mb-4 text-base">
 					Sorti le {selectedMovie.release_date} — {selectedMovie.duration}
@@ -118,7 +118,7 @@
 			</div>
 
 			<div
-				class="border-6 mt-3 border-solid border-black bg-[url('background_actor.webp')] bg-top bg-repeat"
+				class="border-6 mt-3 border-solid border-black bg-[url('/background_actor.webp')] bg-top bg-repeat"
 			>
 				<h3 class="mb-2 bg-black p-2 text-center text-xl font-semibold text-white">Distribution</h3>
 
@@ -158,7 +158,7 @@
 			</div>
 
 			<div
-				class="border-6 mt-1 border-solid border-black bg-[url('background_crew.webp')] bg-top bg-repeat"
+				class="border-6 mt-1 border-solid border-black bg-[url('/background_crew.webp')] bg-top bg-repeat"
 			>
 				<h3 class="mb-2 bg-black p-2 text-center text-xl font-semibold text-white">Équipe</h3>
 

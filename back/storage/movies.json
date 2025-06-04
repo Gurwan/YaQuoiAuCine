@@ -9,49 +9,24 @@
     "position": 8,
     "hidden": false
   },
-  "Until Dawn : La Mort sans fin": {
-    "boxoffice": 405000,
-    "position": 14,
-    "hidden": false
-  },
   "Mission: Impossible - The Final Reckoning": {
     "boxoffice": 866000,
     "position": 5,
     "hidden": false
-  },
-  "La Légende d'Ochi": {
-    "boxoffice": 83000,
-    "position": 24,
-    "hidden": true
   },
   "Thunderbolts*": {
     "boxoffice": 1002000,
     "position": 10,
     "hidden": false
   },
-  "Mr. Wolff 2": {
-    "boxoffice": null,
-    "position": 29,
-    "hidden": true
-  },
   "The Phoenician Scheme": {
     "boxoffice": null,
     "position": 9,
     "hidden": false
   },
-  "Drop Game": {
-    "boxoffice": 97000,
-    "position": 16,
-    "hidden": false
-  },
   "The Woman in the Yard": {
     "boxoffice": null,
     "position": 33,
-    "hidden": true
-  },
-  "Ne Zha 2": {
-    "boxoffice": null,
-    "position": 35,
     "hidden": true
   },
   "Back to Business": {
@@ -84,16 +59,6 @@
     "position": 32,
     "hidden": true
   },
-  "Thudarum": {
-    "boxoffice": null,
-    "position": 34,
-    "hidden": true
-  },
-  "Le Clan des bêtes": {
-    "boxoffice": null,
-    "position": 36,
-    "hidden": true
-  },
   "La venue de l'avenir": {
     "boxoffice": 191000,
     "position": 6,
@@ -113,11 +78,6 @@
     "boxoffice": null,
     "position": 38,
     "hidden": false
-  },
-  "Gangers": {
-    "boxoffice": null,
-    "position": 39,
-    "hidden": true
   },
   "Les Linceuls": {
     "boxoffice": null,
@@ -174,11 +134,6 @@
     "position": 47,
     "hidden": false
   },
-  "L'amour, c'est surcoté": {
-    "boxoffice": 434000,
-    "position": 13,
-    "hidden": false
-  },
   "Moi, ma mère et les autres": {
     "boxoffice": null,
     "position": 48,
@@ -209,16 +164,6 @@
     "position": 52,
     "hidden": true
   },
-  "The Gazer": {
-    "boxoffice": null,
-    "position": 53,
-    "hidden": true
-  },
-  "La Chambre de Mariana": {
-    "boxoffice": 164000,
-    "position": 20,
-    "hidden": false
-  },
   "Transmitzvah": {
     "boxoffice": null,
     "position": 54,
@@ -244,11 +189,6 @@
     "position": 57,
     "hidden": true
   },
-  "Simón de la montaña": {
-    "boxoffice": null,
-    "position": 58,
-    "hidden": true
-  },
   "Ollie": {
     "boxoffice": 10000,
     "position": 21,
@@ -257,11 +197,6 @@
   "Un monde merveilleux": {
     "boxoffice": null,
     "position": 59,
-    "hidden": true
-  },
-  "椒麻堂会": {
-    "boxoffice": null,
-    "position": 60,
     "hidden": true
   },
   "Les arènes": {
@@ -274,30 +209,15 @@
     "position": 62,
     "hidden": false
   },
-  "Un médecin pour la paix": {
-    "boxoffice": null,
-    "position": 63,
-    "hidden": true
-  },
   "L'Effacement": {
     "boxoffice": null,
     "position": 64,
-    "hidden": true
-  },
-  "L'Île des Faisans": {
-    "boxoffice": null,
-    "position": 65,
     "hidden": true
   },
   "Une pointe d'amour": {
     "boxoffice": 117000,
     "position": 28,
     "hidden": false
-  },
-  "Mexico 86": {
-    "boxoffice": null,
-    "position": 66,
-    "hidden": true
   },
   "De mauvaise foi": {
     "boxoffice": 70000,
@@ -339,11 +259,6 @@
     "position": 73,
     "hidden": true
   },
-  "Alterlove": {
-    "boxoffice": null,
-    "position": 74,
-    "hidden": true
-  },
   "R.E.M.": {
     "boxoffice": null,
     "position": 75,
@@ -374,25 +289,10 @@
     "position": 80,
     "hidden": true
   },
-  "Bernadette de Lourdes : le spectacle au cinéma": {
-    "boxoffice": null,
-    "position": 81,
-    "hidden": true
-  },
-  "L'araignée au fond de la cour": {
-    "boxoffice": null,
-    "position": 82,
-    "hidden": true
-  },
   "Milli Vanilli, de la gloire au cauchemar": {
     "boxoffice": null,
     "position": 83,
     "hidden": false
-  },
-  "Familia": {
-    "boxoffice": null,
-    "position": 84,
-    "hidden": true
   },
   "Else": {
     "boxoffice": null,
@@ -429,16 +329,6 @@
     "position": 90,
     "hidden": false
   },
-  "Hello Driver": {
-    "boxoffice": null,
-    "position": 91,
-    "hidden": true
-  },
-  "Des jours meilleurs": {
-    "boxoffice": null,
-    "position": 31,
-    "hidden": false
-  },
   "So Long Marianne": {
     "boxoffice": null,
     "position": 1,
@@ -454,9 +344,84 @@
     "position": 3,
     "hidden": true
   },
-  "Dernière fois": {
+  "Cloud": {
     "boxoffice": null,
-    "position": 4,
-    "hidden": true
+    "position": null,
+    "hidden": false
+  },
+  "Freud, la dernière confession": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "The Shameless": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Le Répondeur": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Gérald le Conquérant": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Fragments d'un parcours amoureux": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Horizonte": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "3ème Œil": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Sauve qui peut": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Dans la peau": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "En Jeg Ser": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "At Aulis": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Génération 90 - Les secrets des séries culte": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Paprsky": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "Blargh": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
+  },
+  "In Forest": {
+    "boxoffice": null,
+    "position": null,
+    "hidden": false
   }
 }

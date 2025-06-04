@@ -13,6 +13,8 @@
 	<title>Y a quoi au ciné ?</title>
 	<meta name="description" content="Envie de voir rapidement ce qu'il y a au cinéma en ce moment ? Quel film aller voir ? Accéder rapidement au résumé et voir si c'est le genre de film qui te correspond ? Tu peux aussi accéder à la liste des prochaines sorties ciné et garder un oeil sur le boxoffice."/>
 
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" /> 
+
 	<script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
 	<script>
 		window.formbutton =
