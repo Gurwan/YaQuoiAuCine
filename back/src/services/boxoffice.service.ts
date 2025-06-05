@@ -50,7 +50,9 @@ export class BoxofficeService implements OnModuleInit {
       const entry: MovieJson = {
         boxoffice: null,
         position: null,
-        hidden: false
+        hidden: false,
+        trailer: null,
+        tiktok: null
       };
       this.set(id, entry);
       return entry;

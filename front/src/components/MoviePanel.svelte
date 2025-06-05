@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PopularityCategory } from '$lib/types/popularity';
+	import { swipeToClose } from '$lib/utils/closePanelSwipe';
 
 	let { selectedMovie = $bindable() } = $props();
 
@@ -28,16 +29,19 @@
 
 <div
 	class="fixed inset-0 z-50 backdrop-blur-sm md:static md:w-[50vw] md:bg-transparent md:backdrop-blur-0"
+	use:swipeToClose={closePanel}
 >
 	<div
 		class="border-5 h-full overflow-y-auto rounded-none border-black shadow-xl md:h-auto md:rounded-xl"
 	>
 		<div class="relative h-56 overflow-hidden pb-8 md:h-72">
-			<img
-				src={'https://image.tmdb.org/t/p/original' + selectedMovie.background}
-				alt={selectedMovie.title}
-				class="absolute inset-0 h-full w-full object-cover font-mono subpixel-antialiased"
-			/>
+			{#if selectedMovie.background}
+				<img
+					src={'https://image.tmdb.org/t/p/original' + selectedMovie.background}
+					alt={selectedMovie.title}
+					class="absolute inset-0 h-full w-full object-cover font-mono subpixel-antialiased"
+				/>
+			{/if}
 
 			<button
 				class="absolute right-4 top-4 rounded-full bg-black/50 p-2 text-2xl text-white"
@@ -67,20 +71,28 @@
 
 				<div class="grid grid-cols-1 gap-6 text-base md:grid-cols-2">
 					<div>
-						<p><span class="font-semibold text-lg">Genres :</span> {selectedMovie.genres.join(', ')}</p>
-
-						<p><span class="font-semibold text-lg">Pays :</span> {selectedMovie.countries.join(', ')}</p>
+						<p>
+							<span class="text-lg font-semibold">Genres :</span>
+							{selectedMovie.genres.join(', ')}
+						</p>
 
 						<p>
-							<span class="font-semibold text-lg">Popularité :</span>
+							<span class="text-lg font-semibold">Pays :</span>
+							{selectedMovie.countries.join(', ')}
+						</p>
+
+						<p>
+							<span class="text-lg font-semibold">Popularité :</span>
 							{getPopularityCategory(selectedMovie.popularity)}
 						</p>
 
 						{#if selectedMovie.revenue && selectedMovie.budget}
 							{#if selectedMovie.budget * 2.5 < selectedMovie.revenue}
-								<p class="w-max rounded bg-green-500 px-3 py-1 text-white text-lg">Rentable</p>
+								<p class="w-max rounded bg-green-500 px-3 py-1 text-lg text-white">Rentable</p>
 							{:else}
-								<p class="w-max rounded bg-red-500 px-3 py-1 text-white text-lg">Pas (encore) rentable</p>
+								<p class="w-max rounded bg-red-500 px-3 py-1 text-lg text-white">
+									Pas (encore) rentable
+								</p>
 							{/if}
 						{/if}
 					</div>
@@ -88,33 +100,57 @@
 					<div>
 						{#if selectedMovie.budget}
 							<p>
-								<span class="font-semibold text-lg">Budget :</span>
+								<span class="text-lg font-semibold">Budget :</span>
 								{selectedMovie.budget.toLocaleString()} $
 							</p>
 						{/if}
 
 						{#if selectedMovie.revenue}
 							<p>
-								<span class="font-semibold text-lg">Revenus :</span>
+								<span class="text-lg font-semibold">Revenus :</span>
 								{selectedMovie.revenue.toLocaleString()} $
 							</p>
 						{/if}
 
 						{#if selectedMovie.json?.boxoffice}
 							<p>
-								<span class="font-semibold text-lg">Entrées en France :</span>
+								<span class="text-lg font-semibold">Entrées en France :</span>
 								{selectedMovie.json?.boxoffice.toLocaleString('fr-FR')}
 							</p>
+						{/if}
+
+						{#if selectedMovie.json?.trailer}
+							<a
+								rel="external"
+								target="_blank"
+								href={selectedMovie.json?.trailer}
+								class="btn flex flex-row gap-3"
+							>
+								<i class="fa-brands fa-youtube mt-1"></i>
+								<span>Voir la bande d'annonce</span>
+							</a>
+						{/if}
+
+						{#if selectedMovie.json?.tiktok}
+							<a
+								rel="external"
+								target="_blank"
+								href={selectedMovie.json?.tiktok}
+								class="btn flex flex-row gap-3"
+							>
+								<i class="fa-brands fa-tiktok mt-1"></i>
+								<span>Voir notre tiktok sur le film</span>
+							</a>
 						{/if}
 					</div>
 				</div>
 
 				<p class="text-base">
-							<span class="font-semibold text-lg">Studios :</span>
-							{selectedMovie.studios
-								.map((s: { name: string; origin_country: string }) => s.name)
-								.join(', ')}
-						</p>
+					<span class="text-lg font-semibold">Studios :</span>
+					{selectedMovie.studios
+						.map((s: { name: string; origin_country: string }) => s.name)
+						.join(', ')}
+				</p>
 			</div>
 
 			<div

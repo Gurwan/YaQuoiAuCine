@@ -162,8 +162,14 @@ export class AppService {
   }
 
   private sortByDate(movies: Movie[]): Movie[] {
-    return movies.sort((a, b) => {
-      return new Date(a.release_date).getTime() - new Date(b.release_date).getTime(); 
+    const sortedMovies = movies.sort((a, b) => {
+      return new Date(this.convertToISO(a.release_date)).getTime() - new Date(this.convertToISO(b.release_date)).getTime();
     });
+    return sortedMovies;
+  }
+
+  private convertToISO(dateStr) {
+    const [day, month, year] = dateStr.split('/');
+    return `${year}-${month}-${day}`;
   }
 }

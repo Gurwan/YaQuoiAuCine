@@ -108,6 +108,8 @@
 				<th scope="col" class="px-6 py-3">Film ID</th>
 				<th scope="col" class="px-6 py-3">Nombre entrées</th>
 				<th scope="col" class="px-6 py-3">Position</th>
+				<th scope="col" class="px-6 py-3">Trailer</th>
+				<th scope="col" class="px-6 py-3">Tiktok</th>
 				<th scope="col" class="px-6 py-3">Actions</th>
 			</tr>
 		</thead>
@@ -129,6 +131,22 @@
 							><input
 								type="number"
 								bind:value={value.position}
+								onchange={() => updateEntry(key, value)}
+							/></td
+						>
+
+						<td class="px-6 py-4"
+							><input
+								type="text"
+								bind:value={value.trailer}
+								onchange={() => updateEntry(key, value)}
+							/></td
+						>
+
+						<td class="px-6 py-4"
+							><input
+								type="text"
+								bind:value={value.tiktok}
 								onchange={() => updateEntry(key, value)}
 							/></td
 						>

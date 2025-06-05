@@ -23,7 +23,7 @@
 			{/each}
 		</div>
 	{:else}
-		<div class="mt-3 grid grid-cols-2 gap-4 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+		<div class="mt-3 grid grid-cols-2 gap-4 p-0 md:p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 			{#each filteredMovies as movie}
 				<MovieCard {movie} bind:details />
 			{/each}
