@@ -2,11 +2,16 @@ import { Injectable, OnModuleInit } from "@nestjs/common";
 import * as path from "path";
 import * as fs from 'fs/promises';
 import { MovieJson } from "src/interfaces/movie.interface";
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class BoxofficeService implements OnModuleInit {
-  private readonly filePath = path.join(__dirname, '..', '..', 'storage', 'movies.json');
+  private readonly filePath: string;
   private data: Record<string, MovieJson> = {};
+
+  constructor(private readonly configService: ConfigService) {
+    this.filePath = this.configService.get<string>('JSON_PATH') || path.join(__dirname, '..', '..', 'storage', 'movies.json')
+  }
 
   async onModuleInit() {
     try {
@@ -21,7 +26,7 @@ export class BoxofficeService implements OnModuleInit {
       }
     } catch (err) {
       if (err.code === 'ENOENT') {
-        console.log('Fichier movies.json non trouvé. Création d’un nouveau fichier.');
+        console.log('Fichier movies.json non trouvé. Création d’un nouveau fichier. (filePath : ' + this.filePath + ' )');
         this.data = {};
         await this.saveData();
       } else {
