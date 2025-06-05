@@ -10,6 +10,7 @@ export class BoxofficeService implements OnModuleInit {
   private data: Record<string, MovieJson> = {};
 
   constructor(private readonly configService: ConfigService) {
+    console.log("Variable d'environnement JSON_PATH : " + this.configService.get<string>('JSON_PATH'))
     this.filePath = this.configService.get<string>('JSON_PATH') || path.join(__dirname, '..', '..', 'storage', 'movies.json')
   }
 
