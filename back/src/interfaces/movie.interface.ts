@@ -2,6 +2,7 @@ export interface MovieResponse {
     id: number;
     title: string;
     poster_path?: string;
+    genre_ids: number[];
     release_date: string;
     vote_average: number;
     overview: string;
@@ -15,6 +16,7 @@ export interface Movie {
     release_date: string;
     rating: number;
     overview: string;
+    genres?: string[];
     language?: string;
     json?: MovieJson;
 }
@@ -54,7 +56,6 @@ export interface MovieDetailsResponse extends MovieResponse {
 export interface MovieDetails extends Movie {
     revenue?: number;
     budget?: number;
-    genres: string[];
     countries: string[];
     popularity: number;
     studios: { name: string, country: string }[];

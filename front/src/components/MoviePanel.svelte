@@ -28,13 +28,15 @@
 </script>
 
 <div
-	class="fixed inset-0 z-50 backdrop-blur-sm md:static md:w-[50vw] md:bg-transparent md:backdrop-blur-0"
+	class="fixed inset-0 z-50 backdrop-blur-sm md:static md:flex md:w-full md:bg-transparent md:justify-center md:backdrop-blur-0"
 	use:swipeToClose={closePanel}
+	onclick={() => closePanel()}
 >
 	<div
-		class="border-5 h-full overflow-y-auto rounded-none border-black shadow-xl md:h-auto md:rounded-xl"
+		class="border-5 h-full md:w-3/4 overflow-y-auto rounded-none border-black shadow-xl"
+		onclick={(event) => event.stopPropagation()}
 	>
-		<div class="relative h-56 overflow-hidden pb-8 md:h-72">
+		<div class="relative h-56 overflow-hidden pb-8">
 			{#if selectedMovie.background}
 				<img
 					src={'https://image.tmdb.org/t/p/original' + selectedMovie.background}

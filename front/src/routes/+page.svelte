@@ -29,10 +29,6 @@
 
 <div class="relative mt-6 flex flex-col gap-4 md:flex-row">
 	{#if selectedMovie}
-		<div class="w-full md:w-1/2">
-			<Movies {movies} bind:details={selectedMovie} bind:filter={$searchInput} />
-		</div>
-
 		<MoviePanel bind:selectedMovie />
 	{:else}
 		<div class="w-full">

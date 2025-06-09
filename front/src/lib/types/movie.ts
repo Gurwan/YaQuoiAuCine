@@ -7,5 +7,6 @@ export interface Movie {
     release_date: string;
     rating: number;
     overview: string;
+    genres: string[];
     json?: MovieJson;
 }

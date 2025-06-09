@@ -5,6 +5,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Movie, MovieDetails, MovieDetailsResponse, MovieResponse } from '../interfaces/movie.interface';
 import { BoxofficeService } from './boxoffice.service';
+import { Genre } from 'src/interfaces/genre.interface';
 
 @Injectable()
 export class AppService {
@@ -38,10 +39,11 @@ export class AppService {
       const mappedMovie = response.data.results.filter((movie: MovieResponse) => {
         const releaseDate = new Date(movie.release_date);
         return !isNaN(releaseDate.getTime()) && releaseDate <= new Date();
-      }).map((movie: MovieResponse): Movie => ({
+      }).map(async (movie: MovieResponse): Promise<Movie> => ({
         id: movie.id,
         title: movie.title,
         poster: movie.poster_path,
+        genres: await this.getGenresById(movie.genre_ids),
         release_date: Intl.DateTimeFormat('fr-FR').format(new Date(movie.release_date)),
         rating: Number(movie.vote_average.toFixed(2)),
         overview: movie.overview,
@@ -49,7 +51,8 @@ export class AppService {
         json: this.boxofficeService.getOrInit(movie.title)
       }));
 
-      moviesResults.push(...mappedMovie);
+      const resolvedMovies = await Promise.all(mappedMovie);
+      moviesResults.push(...resolvedMovies);
     }
 
     this.boxofficeService.clear(moviesResults.map(movie => movie.title));
@@ -74,9 +77,10 @@ export class AppService {
       const urlPage = `${url}?api_key=${this.apiKey}&language=fr-FR&region=FR&page=${i}`;
       const response = await this.httpService.axiosRef.get(urlPage);
 
-      const mappedMovie = response.data.results.map((movie: MovieResponse): Movie => ({
+      const mappedMovie = response.data.results.map(async (movie: MovieResponse): Promise<Movie> => ({
         id: movie.id,
         title: movie.title,
+        genres: await this.getGenresById(movie.genre_ids),
         poster: movie.poster_path,
         release_date: Intl.DateTimeFormat('fr-FR').format(new Date(movie.release_date)),
         rating: Number(movie.vote_average.toFixed(2)),
@@ -84,7 +88,8 @@ export class AppService {
         language: movie.original_language
       }));
 
-      moviesResults.push(...mappedMovie);
+      const resolvedMovies = await Promise.all(mappedMovie);
+      moviesResults.push(...resolvedMovies);
     }
     await this.cacheManager.set(cacheKey, moviesResults);
 
@@ -137,6 +142,28 @@ export class AppService {
     await this.cacheManager.set(cacheKey, movie);
 
     return movie;
+  }
+
+  async getGenres(): Promise<Genre[]> {
+    const cacheKey = `genres`;
+
+    const cached = await this.cacheManager.get<Genre[]>(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
+    const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}&language=fr-FR`;
+    const response = await this.httpService.axiosRef.get(url);
+    const genres: Genre[] = response.data.genres;
+    await this.cacheManager.set(cacheKey, genres);
+
+    return genres;
+  }
+
+  private async getGenresById(ids: number[]): Promise<string[]> {
+    const genres = await this.getGenres();
+    const filteredGenres = genres.filter(genre => ids.includes(genre.id));
+    return filteredGenres.map(genre => genre.name);
   }
 
   private durationToReadableFormat(duration: number): string {
